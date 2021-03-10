@@ -29,7 +29,7 @@ Including header files
  * N=2048
  * N=4096
  */
-#define N 8
+#define N 128
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -49,15 +49,6 @@ void *diagonalPthread(void *);
 
 
 int **matrix; //global matrix variable to be used in main
-
-
-/**
- * @brief auxillary function to get size of matrix for
- * pthread diagonal
- * 
- * @param n 
- * @return int 
- */
 
 
 int matrix_size;//global variable used by diagonal pthreads
