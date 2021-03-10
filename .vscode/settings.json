@@ -15,9 +15,13 @@
         "titleBar.inactiveBackground": "#83256199",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
+<<<<<<< HEAD
     "peacock.color": "#832561",
     "files.associations": {
         "stdint.h": "c",
         "stdlib.h": "c"
     }
+=======
+    "peacock.color": "#832561"
+>>>>>>> 53b055d60d4a991ca37179244419129db5d8dc47
 }
