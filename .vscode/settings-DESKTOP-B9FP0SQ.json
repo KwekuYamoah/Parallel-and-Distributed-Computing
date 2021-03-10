@@ -15,7 +15,5 @@
         "titleBar.inactiveBackground": "#83256199",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#832561",
-    "python.pythonPath": "/usr/bin/python3",
-    "activestate.promptRuntimeCreation": false
+    "peacock.color": "#832561"
 }
