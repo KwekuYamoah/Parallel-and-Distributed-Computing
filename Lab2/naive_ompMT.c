@@ -20,7 +20,7 @@ Including header files
 #include <pthread.h>
 #include <time.h>
 
-#define NUM_THREADS 8
+#define NUM_THREADS 4
 
 /**
  * @brief N represents matrix size
@@ -29,7 +29,7 @@ Including header files
  * N=2048
  * N=4096
  */
-#define N 128
+#define N 8
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -40,27 +40,30 @@ Defining prototypes for function
 void matrixInitialise(int **, int);
 void matrixDisplay(int **, int);
 void naiveOMPTranspose(int **, int);
+void diagonalOMPTranspose(int **, int);
 int **matrixMemoryAllocate(int);
 void transposeBasic(int **, int);
 void swap(int **, int, int);
 void *diagonalPthread(void *);
 
-/*
-Struct to hod the thread data
-*/
-struct thread_data{
-    int **matrix; 
-    int start;
-    int end;
-    int threadId;
-    int matrixSize;
-};
 
-struct thread_data threadDataArray[NUM_THREADS]; //a struct array of struct thread data
 
 int **matrix; //global matrix variable to be used in main
 
+
 /**
+ * @brief auxillary function to get size of matrix for
+ * pthread diagonal
+ * 
+ * @param n 
+ * @return int 
+ */
+
+
+int matrix_size;//global variable used by diagonal pthreads
+int matrix_size= N; //work around to make matrix size globally accesible
+/**
+ * 
  * @brief threads are generated for each diagonal elements for matrix transpose
  * 
  * @param rank 
@@ -70,12 +73,12 @@ void *diagonalPthread(void *rank){
     int start,end, myRank;
     myRank = (int) rank;
 
-    start = myRank * (N/NUM_THREADS);
-    end = (myRank + 1) * (N/NUM_THREADS);
+    start = myRank * (matrix_size/NUM_THREADS);
+    end = (myRank + 1) * (matrix_size/NUM_THREADS);
 
 
     for(int i = start; i < end; i++){
-        for(int j= i + 1; j < N; j ++){
+        for(int j= i + 1; j < matrix_size; j ++){
             swap(matrix, i, j);
         }
     }
@@ -114,6 +117,21 @@ void run_threads(int num_threads, void *(*start_routine)(void *)){
 }
 
 /**
+ * @brief swaps values of matrix at given indices
+ * 
+ * @param matrix 
+ * @param i 
+ * @param j 
+ */
+void swap(int **matrix, int i, int j){
+    
+    int temp = matrix[i][j];
+    matrix[i][j]= matrix[j][i];
+    matrix[j][i] = temp;
+    
+}
+
+/**
  * @brief main function to run code
  * 
  * @param argc 
@@ -121,38 +139,50 @@ void run_threads(int num_threads, void *(*start_routine)(void *)){
  * @return int 
  */
 int main(int argc, char *argv[]){
-    time_t w_time;
+    time_t work_time;
     /*Create matrix, initialise and print it.*/
-    matrix = matrixMemoryAllocate(N);
-    matrixInitialise(matrix, N);
+    matrix = matrixMemoryAllocate(matrix_size);
+    matrixInitialise(matrix, matrix_size);
     //printf("Matrix :\n");
-    //matrixDisplay(matrix,N);
+    //matrixDisplay(matrix,matrix_size);
+    
+    /* Basic matrix transpose.*/
+    work_time = clock();
+    transposeBasic(matrix, matrix_size);
+    work_time = clock() - work_time;
+    printf("Time taken by transposeBasic(): %f s\n\n",
+    ((double)work_time)/CLOCKS_PER_SEC);
+
+    transposeBasic(matrix, matrix_size);
 
     /*OpenMp Naive Threaded Algorithm*/
-    w_time = clock();
-    naiveOMPTranspose(matrix,N);
-    w_time = clock() - w_time;
-    
-    printf("Time taken by naiveOMPTranspose(): %f s\n", 
-    ((double)w_time)/CLOCKS_PER_SEC);
-    
+    work_time = clock();
+    naiveOMPTranspose(matrix,matrix_size);
+    work_time = clock() - work_time;
+    printf("Time taken by naiveOMPTranspose(): %f s\n\n", 
+    ((double)work_time)/CLOCKS_PER_SEC);
 
-    /* Basic matrix transpose.*/
-    w_time = clock();
-    transposeBasic(matrix, N);
-    w_time = clock() - w_time;
-    printf("Time taken by transposeBasic(): %f s\n",
-    ((double)w_time)/CLOCKS_PER_SEC);
+    naiveOMPTranspose(matrix,matrix_size); //Transpose matrix back to original form
+
 
     /*Diagonal Threading Algorithm-Pthreads*/
     
-    w_time = clock();
+    work_time = clock();
     run_threads(NUM_THREADS, diagonalPthread);
-    w_time = clock() - w_time;
+    work_time = clock() - work_time;
+    printf("Time taken by diagonalPthread: %f s\n\n", ((double)work_time)/CLOCKS_PER_SEC);
 
-    printf("Time taken by diagonalPthread: %f s\n", 
-        ((double)w_time)/CLOCKS_PER_SEC);
+    run_threads(NUM_THREADS, diagonalPthread);
     
+
+    /* Diagonal Threading Algorithm-OpenMP*/
+    work_time = clock();
+    diagonalOMPTranspose(matrix,matrix_size);
+    work_time = clock() - work_time;
+    printf("Time taken by diagonalOMPTranspose(): %f s\n\n", ((double)work_time)/CLOCKS_PER_SEC);
+
+    diagonalOMPTranspose(matrix,matrix_size);
+
 
     return (EXIT_SUCCESS);
 }
@@ -209,13 +239,20 @@ void matrixInitialise(int **matrix, int size){
 void matrixDisplay(int **matrix, int size){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j ++){
-           printf("%d", matrix[i][j]);
+           printf("%d \t", matrix[i][j]);
         }
 
         printf("\n");
     }
 }
 
+/**
+ * @brief naively transposes a matrix by parallelising
+ * the for loops using OpenMP
+ * 
+ * @param matrix 
+ * @param size 
+ */
 void naiveOMPTranspose(int **matrix, int size){
     int nThreads;
 
@@ -224,16 +261,16 @@ void naiveOMPTranspose(int **matrix, int size){
         int id;
         id = omp_get_thread_num();
 
+
         /*Master thread can do this*/
         if(id == 0){
             nThreads = omp_get_num_threads();
+        
         }
 
         #pragma omp for nowait
         for(int i = 0; i < size; i ++){
-
-            
-            for(int j=0; j< size; j ++){
+            for(int j=i + 1; j< size; j ++){
                 swap(matrix, i, j);
             }
         }
@@ -241,18 +278,41 @@ void naiveOMPTranspose(int **matrix, int size){
     } /*Parallel section ends*/
 }
 
-/**
- * @brief swaps values of matrix at given indices
- * 
- * @param matrix 
- * @param i 
- * @param j 
- */
-void swap(int **matrix, int i, int j){
-    int temp = matrix[i][j];
-    matrix[i][j]= matrix[j][i];
-    matrix[j][i] = temp;
+void diagonalOMPTranspose(int **matrix, int size){
+    int nThreads;
+    omp_set_dynamic(0);  // Explicitly disable dynamic teams
+    omp_set_num_threads(4); // Use 4 threads for all consecutive parallel regions
+    #pragma omp parallel
+    {
+        int id,start,end,i,j;
+        
+        id = omp_get_thread_num();
+        
+        nThreads = omp_get_num_threads();
+        //printf("Number of threads: %d \n", nThreads);
+
+       
+
+
+        start = id * (size/NUM_THREADS);
+        
+        end = (id + 1) * (size/NUM_THREADS);
+        
+    
+        
+        for(i = start; i < end; i++){
+            for(j= i + 1; j < size; j ++){
+                
+                swap(matrix, i, j);
+            }  
+        }
+
+
+
+    } /*Parallel section ends*/
+
 }
+
 
 /**
  * @brief basic matrix transpose with no parallelism
@@ -262,8 +322,9 @@ void swap(int **matrix, int i, int j){
  */
 void transposeBasic(int **matrix, int size){
     for(int i = 0; i < size; i ++){
-        for(int j=0; j< size; j ++){
+        for(int j=i+1; j< size; j ++){
             swap(matrix, i, j);
         }
     }
+  
 }
