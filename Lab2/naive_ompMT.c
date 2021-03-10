@@ -98,9 +98,7 @@ void run_threads(int num_threads, void *(*start_routine)(void *)){
             fprintf(stderr, "Error: connot create threads\n");
             exit(-1);
         }
-
     }
-
     //Join all threads
     for( t =0; t < num_threads; t++){
         pthread_join(threads[t], NULL);
@@ -118,8 +116,7 @@ void swap(int **matrix, int i, int j){
     
     int temp = matrix[i][j];
     matrix[i][j]= matrix[j][i];
-    matrix[j][i] = temp;
-    
+    matrix[j][i] = temp; 
 }
 
 /**
@@ -155,7 +152,6 @@ int main(int argc, char *argv[]){
 
     naiveOMPTranspose(matrix,matrix_size); //Transpose matrix back to original form
 
-
     /*Diagonal Threading Algorithm-Pthreads*/
     
     work_time = clock();
@@ -165,7 +161,6 @@ int main(int argc, char *argv[]){
 
     run_threads(NUM_THREADS, diagonalPthread);
     
-
     /* Diagonal Threading Algorithm-OpenMP*/
     work_time = clock();
     diagonalOMPTranspose(matrix,matrix_size);
@@ -174,6 +169,7 @@ int main(int argc, char *argv[]){
 
     diagonalOMPTranspose(matrix,matrix_size);
 
+    free(matrix); //free space
 
     return (EXIT_SUCCESS);
 }
@@ -265,7 +261,6 @@ void naiveOMPTranspose(int **matrix, int size){
                 swap(matrix, i, j);
             }
         }
-
     } /*Parallel section ends*/
 }
 
@@ -280,16 +275,10 @@ void diagonalOMPTranspose(int **matrix, int size){
         id = omp_get_thread_num();
         
         nThreads = omp_get_num_threads();
-        //printf("Number of threads: %d \n", nThreads);
 
-       
-
-
-        start = id * (size/NUM_THREADS);
+        start = id * (size/nThreads);
         
-        end = (id + 1) * (size/NUM_THREADS);
-        
-    
+        end = (id + 1) * (size/nThreads);
         
         for(i = start; i < end; i++){
             for(j= i + 1; j < size; j ++){
@@ -297,13 +286,9 @@ void diagonalOMPTranspose(int **matrix, int size){
                 swap(matrix, i, j);
             }  
         }
-
-
-
     } /*Parallel section ends*/
 
 }
-
 
 /**
  * @brief basic matrix transpose with no parallelism
