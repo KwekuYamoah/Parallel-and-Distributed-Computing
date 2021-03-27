@@ -11,6 +11,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 
 /**
@@ -20,10 +21,14 @@
  * N=2048
  * N=4096
  */
-#define N 128
+#define N 8
 #define N1 1024
 #define N2 2048
 #define N3 4096
+
+int **A;
+int **B;
+int **C; //Three Matrices
 
 /*
 Defining prototypes for function
@@ -32,10 +37,43 @@ void matrixInitialise(int **, int);
 void matrixInitialiseZeros(int **, int);
 void matrixDisplay(int **, int);
 int **matrixMemoryAllocate(int);
+void matrixMultiplicationNaive(int **, int);
 
 
 int matrix_size;//global variable used by diagonal pthreads
 int matrix_size= N; //work around to make matrix size globally accesible
+
+
+/**
+ * @brief main function to run code
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
+
+int main(int argc, char *argv[]){
+    /*Create Matrix A,B,C and initilise it*/
+    A = matrixMemoryAllocate(matrix_size);
+    B = matrixMemoryAllocate(matrix_size);
+    C = matrixMemoryAllocate(matrix_size);
+
+    //initialisation of matrices
+    matrixInitialise(A, matrix_size);
+    matrixInitialise(B, matrix_size);
+    matrixInitialiseZeros(C, matrix_size);
+
+    printf("Matrix A: \n");
+    matrixDisplay(A, matrix_size);
+    printf("Matrix C: \n");
+    matrixDisplay(B,matrix_size);
+    
+    /*Compute A*B*/
+    matrixMultiplicationNaive(C,matrix_size);
+    printf("Matrix A*B = C: \n");
+    matrixDisplay(C,matrix_size);
+    return (EXIT_SUCCESS);
+}
 
 /**
  * @brief dynamicall creates a 2 dimensional array
@@ -86,7 +124,7 @@ void matrixInitialise(int **matrix, int size){
  * @param matrix 
  * @param size 
  */
-void matrixInitialise(int **matrix, int size){
+void matrixInitialiseZeros(int **matrix, int size){
     int k = 0;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j ++){
@@ -108,5 +146,22 @@ void matrixDisplay(int **matrix, int size){
         }
 
         printf("\n");
+    }
+}
+
+/**
+ * @brief Computes A*B sequentially
+ * 
+ * @param matrix 
+ * @param size 
+ */
+void matrixMultiplicationNaive(int **matrix, int size){
+    int i,j,k;
+    for(i = 0; i < size; i++){
+        for(j= 0; j < size; j++){
+            for(k = 0; k < size; k++){
+                C[i][j] += A[i][k]*B[k][j];
+            }
+        }
     }
 }
