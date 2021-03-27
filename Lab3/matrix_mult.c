@@ -29,6 +29,7 @@
 Defining prototypes for function
 */
 void matrixInitialise(int **, int);
+void matrixInitialiseZeros(int **, int);
 void matrixDisplay(int **, int);
 int **matrixMemoryAllocate(int);
 
@@ -74,6 +75,21 @@ void matrixInitialise(int **matrix, int size){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j ++){
            k ++;
+           matrix[i][j] = k;
+        }
+    }
+}
+
+/**
+ * @brief initialise matrix with only zeros
+ * 
+ * @param matrix 
+ * @param size 
+ */
+void matrixInitialise(int **matrix, int size){
+    int k = 0;
+    for(int i = 0; i < size; i++){
+        for(int j = 0; j < size; j ++){
            matrix[i][j] = k;
         }
     }
