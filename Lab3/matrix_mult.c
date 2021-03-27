@@ -21,7 +21,7 @@
  * N=2048
  * N=4096
  */
-#define N 8
+#define N 128
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -41,7 +41,7 @@ void matrixMultiplicationNaive(int **, int);
 
 
 int matrix_size;//global variable used by diagonal pthreads
-int matrix_size= N; //work around to make matrix size globally accesible
+int matrix_size= N3; //work around to make matrix size globally accesible
 
 
 /**
@@ -53,6 +53,9 @@ int matrix_size= N; //work around to make matrix size globally accesible
  */
 
 int main(int argc, char *argv[]){
+
+    time_t work_time;
+
     /*Create Matrix A,B,C and initilise it*/
     A = matrixMemoryAllocate(matrix_size);
     B = matrixMemoryAllocate(matrix_size);
@@ -63,15 +66,14 @@ int main(int argc, char *argv[]){
     matrixInitialise(B, matrix_size);
     matrixInitialiseZeros(C, matrix_size);
 
-    printf("Matrix A: \n");
-    matrixDisplay(A, matrix_size);
-    printf("Matrix C: \n");
-    matrixDisplay(B,matrix_size);
     
     /*Compute A*B*/
+    work_time = clock();
     matrixMultiplicationNaive(C,matrix_size);
-    printf("Matrix A*B = C: \n");
-    matrixDisplay(C,matrix_size);
+    work_time = clock() - work_time;
+    printf("Time taken by matrixMultiplicationNaive(): %f s\n\n", 
+    ((double)work_time)/CLOCKS_PER_SEC);
+    
     return (EXIT_SUCCESS);
 }
 
