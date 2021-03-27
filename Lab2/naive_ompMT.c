@@ -279,7 +279,7 @@ void diagonalOMPTranspose(int **matrix, int size){
         start = id * (size/nThreads);
         
         end = (id + 1) * (size/nThreads);
-        
+        #pragma omp parallel private(j)
         for(i = start; i < end; i++){
             for(j= i + 1; j < size; j ++){
                 
