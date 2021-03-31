@@ -37,11 +37,11 @@ void matrixInitialise(int **, int);
 void matrixInitialiseZeros(int **, int);
 void matrixDisplay(int **, int);
 int **matrixMemoryAllocate(int);
-void matrixMultiplicationNaive(int **, int);
+void matrixMultiplicationNaive(int **,int **,int **, int);
 
 
 int matrix_size;//global variable used by diagonal pthreads
-int matrix_size= N3; //work around to make matrix size globally accesible
+int matrix_size= N; //work around to make matrix size globally accesible
 
 
 /**
@@ -69,10 +69,11 @@ int main(int argc, char *argv[]){
     
     /*Compute A*B*/
     work_time = clock();
-    matrixMultiplicationNaive(C,matrix_size);
+    matrixMultiplicationNaive(A , B ,C ,matrix_size);
     work_time = clock() - work_time;
     printf("Time taken by matrixMultiplicationNaive(): %f s\n\n", 
     ((double)work_time)/CLOCKS_PER_SEC);
+
     
     return (EXIT_SUCCESS);
 }
@@ -157,12 +158,12 @@ void matrixDisplay(int **matrix, int size){
  * @param matrix 
  * @param size 
  */
-void matrixMultiplicationNaive(int **matrix, int size){
+void matrixMultiplicationNaive(int **matrix_a,int **matrix_b,int **matrix_c, int size){
     int i,j,k;
     for(i = 0; i < size; i++){
         for(j= 0; j < size; j++){
             for(k = 0; k < size; k++){
-                C[i][j] += A[i][k]*B[k][j];
+                matrix_c[i][j] += matrix_a[i][k] * matrix_b[k][j];
             }
         }
     }
