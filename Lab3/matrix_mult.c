@@ -12,6 +12,7 @@
 #include <mpi.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include <time.h>
 
 
@@ -77,15 +78,46 @@ int main(int argc, char *argv[]){
     ((double)work_time)/CLOCKS_PER_SEC);
 
     /**
+     * @brief Free memory of matrices
+     * after sequential execution
+     * 
+     */
+
+    free(A);
+    free(B);
+    free(C);
+
+    /**
      * @brief MPI Implementation of Matrix multiplication
      * 
      */
-    int myrank, P, from, to, i,j,k;
+    int myrank, P; // rank of current process and no. of processes
+    int part_rows, part_columns, to, i,j,k;
     int tag = 4096;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
     MPI_Comm_size(MPI_COMM_WORLD, &P);
+
+    part_rows = sqrt(P); //Will be passed to matrix A and partitioned into sqrt(P) rows
+    part_columns = sqrt(P); //Will be passed to matrix B and partitioned into sqrt(P) columns
+
+    /**
+     * @brief if process is p0 initialise
+     * Matrices A, B & C
+     * 
+     */
+    if(myrank == 0){
+        A = matrixMemoryAllocate(matrix_size);
+        B = matrixMemoryAllocate(matrix_size);
+        C = matrixMemoryAllocate(matrix_size);
+
+        //initialisation of matrices
+        matrixInitialise(A, matrix_size);
+        matrixInitialise(B, matrix_size);
+        matrixInitialiseZeros(C, matrix_size);
+    }
+
 
 
     
@@ -93,7 +125,7 @@ int main(int argc, char *argv[]){
 }
 
 /**
- * @brief dynamicall creates a 2 dimensional array
+ * @brief dynamically creates a 2 dimensional array
  * of any size
  * 
  * @param size 
