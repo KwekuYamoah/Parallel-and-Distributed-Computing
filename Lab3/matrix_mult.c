@@ -23,7 +23,7 @@
  * N=2048
  * N=4096
  */
-#define N 128
+#define N 8
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -55,11 +55,14 @@ int matrix_size= N; //work around to make matrix size globally accesible
  * @return int 
  */
 
+void printarr(int **data, int n, char *str);
+int **allocarray(int n);
+
 int main(int argc, char *argv[]){
 
-    time_t work_time;
+    /*time_t work_time;
 
-    /*Create Matrix A,B,C and initilise it*/
+    /*Create Matrix A,B,C and initilise it
     A = matrixMemoryAllocate(matrix_size);
     B = matrixMemoryAllocate(matrix_size);
     C = matrixMemoryAllocate(matrix_size);
@@ -70,7 +73,7 @@ int main(int argc, char *argv[]){
     matrixInitialiseZeros(C, matrix_size);
 
     
-    /*Compute A*B*/
+    /*Compute A*B
     work_time = clock();
     matrixMultiplicationNaive(A , B ,C ,matrix_size);
     work_time = clock() - work_time;
@@ -81,19 +84,22 @@ int main(int argc, char *argv[]){
      * @brief Free memory of matrices
      * after sequential execution
      * 
-     */
+     
 
-    free(A);
     free(B);
-    free(C);
+    free(C); */
 
     /**
      * @brief MPI Implementation of Matrix multiplication
      * 
      */
     int myrank, P; // rank of current process and no. of processes
-    int part_rows, part_columns, to, i,j,k;
-    int tag = 4096;
+    int part_rows, part_columns, i, j, k;
+    int tag = 100;
+
+    const int sender  =0;
+    const int receiver=1;
+
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
@@ -103,29 +109,65 @@ int main(int argc, char *argv[]){
     part_columns = sqrt(P); //Will be passed to matrix B and partitioned into sqrt(P) columns
 
     /**
+     * @brief Check if our row partitions and column 
+     * partitions divide our matrix size evenly.This is
+     * an essential assumption for our algorithm to work
+     * 
+     */
+    if( matrix_size % part_columns !=0 && matrix_size % part_rows != 0){
+         fprintf(stderr,"%s: Only works with np=%d for now\n", argv[0], part_rows);
+        MPI_Abort(MPI_COMM_WORLD,1);
+    }
+
+     //Time to create row and column datatypes
+    MPI_Datatype columntype, tmp;
+    MPI_Status stat;
+
+    /**
      * @brief if process is p0 initialise
      * Matrices A, B & C
      * 
      */
-    if(myrank == 0){
+    if(myrank == sender){
         A = matrixMemoryAllocate(matrix_size);
-        B = matrixMemoryAllocate(matrix_size);
-        C = matrixMemoryAllocate(matrix_size);
-
-        //initialisation of matrices
         matrixInitialise(A, matrix_size);
-        matrixInitialise(B, matrix_size);
-        matrixInitialiseZeros(C, matrix_size);
+        
+
+        MPI_Datatype rowtype;
+        int starts[2] = {0,0};
+        int subsizes[2] = {P, P};
+        int bigsizes[2] = {matrix_size, matrix_size};
+
+        MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &rowtype);
+        MPI_Type_commit(&rowtype);
+
+        MPI_Send(&(A[0][0]), 1, rowtype, receiver, tag, MPI_COMM_WORLD);
+        MPI_Type_free(&rowtype);
+
+        free(A[0]);
+        free(A);
+
+    }
+    else if(myrank ==1){
+        C = matrixMemoryAllocate(P);
+        matrixInitialiseZeros(C, P);
+        matrixDisplay(C,P);
+        printf("\n \n");
+
+        MPI_Recv(&(C[0][0]), P*P, MPI_INT, sender, tag, MPI_COMM_WORLD, &stat);
+
+        matrixDisplay(C,P);
+
+
+        free(C[0]);
+        free(C);
     }
 
-    //Time to create row and column datatypes
-    MPI_Datatype rowtype,columntype;
-    
-
-
-    
-    return (EXIT_SUCCESS);
+   MPI_Finalize();
+   return (EXIT_SUCCESS);
 }
+
+
 
 /**
  * @brief dynamically creates a 2 dimensional array
@@ -134,23 +176,23 @@ int main(int argc, char *argv[]){
  * @param size 
  * @return int** 
  */
-int **matrixMemoryAllocate(int size){
+int **matrixMemoryAllocate(int n){
     //allocate space
-    int **matrix;
-    matrix = malloc(size * sizeof(int*));
+    int *data = malloc(n*n*sizeof(int));
+    int **arr = malloc(n*sizeof(int *));
+    for (int i=0; i<n; i++)
+        arr[i] = &(data[i*n]);
 
-    for (int i = 0; i < size; i++){
-        matrix[i] = malloc(size * sizeof(int));
-    }
+    
     
     /*if allocation failed*/
-    if(matrix == NULL){
+    if(arr == NULL){
         fprintf(stderr, "out of memory\n");
         exit(1);
     }
 
     /*if successful*/
-    return matrix;
+    return arr;
 
 }
 

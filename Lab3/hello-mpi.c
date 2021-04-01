@@ -1,35 +1,93 @@
-/* It just show the number of threads.
- * In the for loop, All of works have not distributed as much as the threads,
- * but the master thread only do it.
- * It means, all of threads except master send messages abroad, and master sends it.
- */
-
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <mpi.h>
 
-const int MAX_STRING = 100;
+void printarr(int **data, int n, char *str);
+int **allocarray(int n);
 
-int main(int argc, const char* argv[]) {
-  char  greeting[MAX_STRING];
-  int   comm_sz;    /* the number of processes */
-  int   my_rank;    /* process' ranking number */
+int main(int argc, char **argv) {
 
-  MPI_Init(&argc, &argv);
-  MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
-  MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
+    /* array sizes */
+    const int bigsize =10;
+    const int subsize =5;
 
-  if (my_rank != 0) {
-    sprintf(greeting, "Greetings from process %d of %d!", my_rank, comm_sz);
-    MPI_Send(greeting, strlen(greeting) + 1, MPI_CHAR, 0, 0, MPI_COMM_WORLD);
-  } else {
-    printf("Greetings from process %d of %d!\n", my_rank, comm_sz);
-    for (int q = 1; q < comm_sz; q++) {
-      MPI_Recv(greeting, MAX_STRING, MPI_CHAR, q, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-      printf("%s\n", greeting);
+    /* communications parameters */
+    const int sender  =0;
+    const int receiver=1;
+    const int ourtag  =2;
+
+    int rank, size;
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+    if (size < receiver+1) {
+        if (rank == 0)
+            fprintf(stderr,"%s: Needs at least %d  processors.\n", argv[0], receiver+1);
+        MPI_Finalize();
+        return 1;
     }
-  }
 
-  MPI_Finalize();
-  return 0;
+    if (rank == sender) {
+        int **bigarray = allocarray(bigsize);
+        for (int i=0; i<bigsize; i++)
+            for (int j=0; j<bigsize; j++)
+                bigarray[i][j] = i*bigsize+j;
+
+
+        printarr(bigarray, bigsize, " Sender: Big array ");
+
+        MPI_Datatype mysubarray;
+
+        int starts[2] = {5,3};
+        int subsizes[2]  = {subsize,subsize};
+        int bigsizes[2]  = {bigsize, bigsize};
+        MPI_Type_create_subarray(2, bigsizes, subsizes, starts,
+                                 MPI_ORDER_C, MPI_INT, &mysubarray);
+        MPI_Type_commit(&mysubarray);
+
+        MPI_Send(&(bigarray[0][0]), 1, mysubarray, receiver, ourtag, MPI_COMM_WORLD);
+        MPI_Type_free(&mysubarray);
+
+        free(bigarray[0]);
+        free(bigarray);
+
+    } else if (rank == receiver) {
+
+        int **subarray = allocarray(subsize);
+
+        for (int i=0; i<subsize; i++)
+            for (int j=0; j<subsize; j++)
+                subarray[i][j] = 0;
+
+        MPI_Recv(&(subarray[0][0]), subsize*subsize, MPI_INT, sender, ourtag, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+
+        printarr(subarray, subsize, " Receiver: Subarray -- after receive");
+
+        free(subarray[0]);
+        free(subarray);
+    }
+
+    MPI_Finalize();
+    return 0;
+}
+
+void printarr(int **data, int n, char *str) {    
+    printf("-- %s --\n", str);
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<n; j++) {
+            printf("%3d ", data[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int **allocarray(int n) {
+    int *data = malloc(n*n*sizeof(int));
+    int **arr = malloc(n*sizeof(int *));
+    for (int i=0; i<n; i++)
+        arr[i] = &(data[i*n]);
+
+    return arr;
 }
