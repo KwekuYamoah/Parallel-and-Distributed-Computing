@@ -9,7 +9,7 @@
  * 
  */
 
-#include "mpi.h"
+#include <mpi.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -39,6 +39,7 @@ void matrixInitialiseZeros(int **, int);
 void matrixDisplay(int **, int);
 int **matrixMemoryAllocate(int);
 void matrixMultiplicationNaive(int **,int **,int **, int);
+void matrixMultiplicationMPI(int **, int **, int **, int);
 
 
 int matrix_size;//global variable used by diagonal pthreads
@@ -74,6 +75,18 @@ int main(int argc, char *argv[]){
     work_time = clock() - work_time;
     printf("Time taken by matrixMultiplicationNaive(): %f s\n\n", 
     ((double)work_time)/CLOCKS_PER_SEC);
+
+    /**
+     * @brief MPI Implementation of Matrix multiplication
+     * 
+     */
+    int myrank, P, from, to, i,j,k;
+    int tag = 4096;
+
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
+    MPI_Comm_size(MPI_COMM_WORLD, &P);
+
 
     
     return (EXIT_SUCCESS);
@@ -168,4 +181,11 @@ void matrixMultiplicationNaive(int **matrix_a,int **matrix_b,int **matrix_c, int
             }
         }
     }
+}
+
+
+void matrixMultiplicationMPI(int **matrix_a, int **matrix_b, int **matrix_c, int size){
+
+    
+
 }
