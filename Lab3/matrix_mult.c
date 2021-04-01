@@ -118,6 +118,9 @@ int main(int argc, char *argv[]){
         matrixInitialiseZeros(C, matrix_size);
     }
 
+    //Time to create row and column datatypes
+    MPI_Datatype rowtype,columntype;
+    
 
 
     
