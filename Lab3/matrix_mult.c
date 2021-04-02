@@ -37,8 +37,13 @@ Defining prototypes for function
 */
 void matrixInitialise(int **, int);
 void matrixInitialiseZeros(int **, int);
+void matrixInitialise2(int **, int, int);
+void matrixInitialiseZeros2(int **, int, int);
 void matrixDisplay(int **, int);
-int **matrixMemoryAllocate(int);
+int matrixMemoryAllocate(int ***,int);
+void matrixDisplay2(int **, int, int);
+int matrixMemoryAllocate2(int ***,int, int);
+
 void matrixMultiplicationNaive(int **,int **,int **, int);
 void matrixMultiplicationMPI(int **, int **, int **, int);
 
@@ -115,7 +120,7 @@ int main(int argc, char *argv[]){
      * 
      */
     if( matrix_size % part_columns !=0 && matrix_size % part_rows != 0){
-         fprintf(stderr,"%s: Only works with np=%d for now\n", argv[0], part_rows);
+        fprintf(stderr,"%s: Only works with np=%d for now\n", argv[0], part_rows);
         MPI_Abort(MPI_COMM_WORLD,1);
     }
 
@@ -128,43 +133,76 @@ int main(int argc, char *argv[]){
      * Matrices A, B & C
      * 
      */
-    if(myrank == sender){
-        A = matrixMemoryAllocate(matrix_size);
+
+    if(myrank == 0){
+        matrixMemoryAllocate(&A,matrix_size);
         matrixInitialise(A, matrix_size);
-        
-
-        MPI_Datatype rowtype;
-        int starts[2] = {0,0};
-        int subsizes[2] = {P, P};
-        int bigsizes[2] = {matrix_size, matrix_size};
-
-        MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &rowtype);
-        MPI_Type_commit(&rowtype);
-
-        MPI_Send(&(A[0][0]), 1, rowtype, receiver, tag, MPI_COMM_WORLD);
-        MPI_Type_free(&rowtype);
-
-        free(A[0]);
-        free(A);
 
     }
-    else if(myrank ==1){
-        C = matrixMemoryAllocate(P);
-        matrixInitialiseZeros(C, P);
-        matrixDisplay(C,P);
-        printf("\n \n");
-
-        MPI_Recv(&(C[0][0]), P*P, MPI_INT, sender, tag, MPI_COMM_WORLD, &stat);
-
-        matrixDisplay(C,P);
+    //Initialise local array
+    matrixMemoryAllocate2(&C,part_rows, matrix_size);
 
 
-        free(C[0]);
-        free(C);
+    MPI_Datatype rowtype;
+    int starts[2] = {0,0};
+    int subsizes[2] = {part_rows, matrix_size};
+    int bigsizes[2] = {matrix_size, matrix_size};
+
+    MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &tmp);
+    MPI_Type_create_resized(tmp, 0, matrix_size*sizeof(int), &rowtype);
+    MPI_Type_commit(&rowtype);
+
+    int *globalptr = NULL;
+
+    if(myrank == 0){
+        globalptr = &(A[0][0]);
+    }
+    int send_counts[matrix_size/part_rows];
+    int dispals[matrix_size/part_rows];
+    int grid_size = matrix_size/part_rows;
+
+    if(myrank == 0){
+       
+        for(i = 0; i < grid_size; i ++){
+            send_counts[i]= 1;
+        }
+
+        //calculate displacements
+        k = 0;
+        for(i = 0; i < grid_size; i ++){ 
+            dispals[k] = i *(part_rows * matrix_size);
+            k++;
+        }
+
+        for(i = 0; i < grid_size; i ++){ 
+           printf("%d ", dispals[i]);
+        }
+        printf("\n");
     }
 
-   MPI_Finalize();
-   return (EXIT_SUCCESS);
+
+    
+    MPI_Scatterv(globalptr, send_counts, dispals, rowtype, &(C[0][0]),part_rows * matrix_size, MPI_INT, sender, MPI_COMM_WORLD);
+
+    /* now all processors print their local data: */
+    for(j = 0; j < P; j ++){
+        if(myrank == j){
+            printf("Local process on rank %d is: \n", myrank);
+            matrixDisplay2(C, part_rows, matrix_size);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    /**MPI_Type_free(&rowtype);
+
+    free(A[0]);
+    free(A);
+
+    free(C[0]);
+    free(C);**/
+
+    MPI_Finalize();
+    return (EXIT_SUCCESS);
 }
 
 
@@ -176,24 +214,43 @@ int main(int argc, char *argv[]){
  * @param size 
  * @return int** 
  */
-int **matrixMemoryAllocate(int n){
+int matrixMemoryAllocate(int ***array,int n){
     //allocate space
-    int *data = malloc(n*n*sizeof(int));
-    int **arr = malloc(n*sizeof(int *));
-    for (int i=0; i<n; i++)
-        arr[i] = &(data[i*n]);
+    int *data =(int *)malloc(n*n*sizeof(int));
+    
+    if(!data){return -1;}
+    (*array) = (int **)malloc(n*sizeof(int *));
 
-    
-    
-    /*if allocation failed*/
-    if(arr == NULL){
-        fprintf(stderr, "out of memory\n");
-        exit(1);
+    if(!(*array)){
+        free(data);
+        return -1;
     }
 
-    /*if successful*/
-    return arr;
+    for (int i=0; i<n; i++)
+       (*array)[i] = &(data[i*n]);
 
+    return 0;
+    
+    
+
+}
+
+int matrixMemoryAllocate2(int ***array ,int row, int column){
+    //allocate space
+    int *data =(int *)malloc(row*column*sizeof(int));
+    
+    if(!data){return -1;}
+    (*array) = (int **)malloc(row*sizeof(int *));
+
+    if(!(*array)){
+        free(data);
+        return -1;
+    }
+
+    for (int i=0; i<row; i++)
+       (*array)[i] = &(data[i*row]);
+
+    return 0;
 }
 
 /**
@@ -206,6 +263,16 @@ void matrixInitialise(int **matrix, int size){
     int k = 0;
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j ++){
+           k ++;
+           matrix[i][j] = k;
+        }
+    }
+}
+
+void matrixInitialise2(int **matrix, int row, int column){
+    int k = 0;
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < column; j ++){
            k ++;
            matrix[i][j] = k;
         }
@@ -227,6 +294,14 @@ void matrixInitialiseZeros(int **matrix, int size){
     }
 }
 
+void matrixInitialiseZeros2(int **matrix, int row, int column){
+    int k = 0;
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < column; j ++){
+           matrix[i][j] = k;
+        }
+    }
+}
 /**
  * @brief display matrix contents
  * 
@@ -236,6 +311,16 @@ void matrixInitialiseZeros(int **matrix, int size){
 void matrixDisplay(int **matrix, int size){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j ++){
+           printf("%d \t", matrix[i][j]);
+        }
+
+        printf("\n");
+    }
+}
+
+void matrixDisplay2(int **matrix, int row, int column){
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < column; j ++){
            printf("%d \t", matrix[i][j]);
         }
 
