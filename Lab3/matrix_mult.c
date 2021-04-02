@@ -23,7 +23,7 @@
  * N=2048
  * N=4096
  */
-#define N 16
+#define N 8
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -46,6 +46,9 @@ int matrixMemoryAllocate2(int ***,int, int);
 
 void matrixMultiplicationNaive(int **,int **,int **, int);
 void matrixMultiplicationMPI(int **, int **, int **, int);
+
+MPI_Datatype createSubarrayRows(int, int);
+MPI_Datatype createSubarrayColumns(int, int);
 
 
 int matrix_size;//global variable used by diagonal pthreads
@@ -143,16 +146,9 @@ int main(int argc, char *argv[]){
     matrixMemoryAllocate2(&C,matrix_size, matrix_size);
     matrixInitialiseZeros2(C, matrix_size, matrix_size);
 
-
-    MPI_Datatype rowtype;
-    int starts[2] = {0,0};
-    int subsizes[2] = {part_rows, matrix_size};
-    int bigsizes[2] = {matrix_size, matrix_size};
-
-    MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &tmp);
-    MPI_Type_create_resized(tmp, 0, matrix_size*sizeof(int), &rowtype);
-    MPI_Type_commit(&rowtype);
-
+    
+    MPI_Datatype rowtype = createSubarrayRows(part_rows, matrix_size);
+    
     int *globalptr = NULL;
 
     if(myrank == 0){
@@ -195,19 +191,43 @@ int main(int argc, char *argv[]){
         MPI_Barrier(MPI_COMM_WORLD);
     }
 
-    /**MPI_Type_free(&rowtype);
+    //MPI_Type_free(&rowtype);
 
-    free(A[0]);
-    free(A);
+    //free(A[0]);
+    //free(A);
 
     free(C[0]);
-    free(C);**/
+    free(C);
 
     MPI_Finalize();
     return (EXIT_SUCCESS);
 }
 
+MPI_Datatype createSubarrayRows(int partition, int size){
+        MPI_Datatype type, tmp;
+        int starts[2] = {0,0};
+        int subsizes[2] = {partition, size};
+        int bigsizes[2] = {size, size};
 
+        MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &tmp);
+        MPI_Type_create_resized(tmp, 0, matrix_size*sizeof(int), &type);
+        MPI_Type_commit(&type);
+
+        return type;
+}
+
+MPI_Datatype createSubarrayColumns(int partition, int size){
+        MPI_Datatype type, tmp;
+        int starts[2] = {0,0};
+        int subsizes[2] = {size, partition};
+        int bigsizes[2] = {size, size};
+
+        MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &tmp);
+        MPI_Type_create_resized(tmp, 0, matrix_size*sizeof(int), &type);
+        MPI_Type_commit(&type);
+
+        return type;
+}
 
 /**
  * @brief dynamically creates a 2 dimensional array
