@@ -50,6 +50,8 @@ void matrixMultiplicationMPI(int **, int **, int **, int);
 MPI_Datatype createSubarrayRows(int, int);
 MPI_Datatype createSubarrayColumns(int, int);
 
+void scatterRows(int **, int **, int , int , int , int P, MPI_Datatype);
+
 
 int matrix_size;//global variable used by diagonal pthreads
 int matrix_size= N; //work around to make matrix size globally accesible
@@ -105,7 +107,7 @@ int main(int argc, char *argv[]){
     int part_rows, part_columns, i, j, k;
     int tag = 100;
 
-    const int sender  =0;
+   
     const int receiver=1;
 
 
@@ -148,48 +150,12 @@ int main(int argc, char *argv[]){
 
     
     MPI_Datatype rowtype = createSubarrayRows(part_rows, matrix_size);
-    
-    int *globalptr = NULL;
 
-    if(myrank == 0){
-        globalptr = &(A[0][0]);
-    }
-    int send_counts[matrix_size/part_rows];
-    int dispals[matrix_size/part_rows];
-    int grid_size = matrix_size/part_rows;
-
-    if(myrank == 0){
-       
-        for(i = 0; i < grid_size; i ++){
-            send_counts[i]= 1;
-        }
-
-        //calculate displacements
-        k = 0;
-        for(i = 0; i < grid_size; i ++){ 
-            //dispals[k] = i *(part_rows * matrix_size);
-            dispals[i] = k;
-            k+=part_rows;
-        }
-
-        for(i = 0; i < grid_size; i ++){ 
-           printf("%d ", dispals[i]);
-        }
-        printf("\n");
-    }
-
+    scatterRows(A, C, matrix_size, part_rows,  myrank, P, rowtype);
 
     
-    MPI_Scatterv(globalptr, send_counts, dispals, rowtype, &(C[0][0]),part_rows * matrix_size, MPI_INT, sender, MPI_COMM_WORLD);
-
-    /* now all processors print their local data: */
-    for(j = 0; j < P; j ++){
-        if(myrank == j){
-            printf("Local process on rank %d is: \n", myrank);
-            matrixDisplay2(C, part_rows, matrix_size);
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
+    
+    
 
     //MPI_Type_free(&rowtype);
 
@@ -227,6 +193,53 @@ MPI_Datatype createSubarrayColumns(int partition, int size){
         MPI_Type_commit(&type);
 
         return type;
+}
+
+void scatterRows(int **source_matrix, int **dest_matrix, int matrix_size, int part_rows, int myrank, int P, MPI_Datatype rowtype){
+    int i,j,k;
+    const int sender = 0;
+
+    int *globalptr = NULL;
+
+    if(myrank == 0){
+        globalptr = &(source_matrix[0][0]);
+    }
+    int send_counts[matrix_size/part_rows];
+    int dispals[matrix_size/part_rows];
+    int grid_size = matrix_size/part_rows;
+
+    if(myrank == 0){
+    
+        for(i = 0; i < grid_size; i ++){
+            send_counts[i]= 1;
+        }
+
+        //calculate displacements
+        k = 0;
+        for(i = 0; i < grid_size; i ++){ 
+            //dispals[k] = i *(part_rows * matrix_size);
+            dispals[i] = k;
+            k+=part_rows;
+        }
+
+        for(i = 0; i < grid_size; i ++){ 
+        printf("%d ", dispals[i]);
+        }
+        printf("\n");
+    }
+
+
+    
+    MPI_Scatterv(globalptr, send_counts, dispals, rowtype, &(dest_matrix[0][0]),part_rows * matrix_size, MPI_INT, sender, MPI_COMM_WORLD);
+
+    /* now all processors print their local data: */
+    for(j = 0; j < P; j ++){
+        if(myrank == j){
+            printf("Local process on rank %d is: \n", myrank);
+            matrixDisplay2(dest_matrix, part_rows, matrix_size);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
 }
 
 /**
