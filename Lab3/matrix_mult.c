@@ -23,7 +23,7 @@
  * N=2048
  * N=4096
  */
-#define N 8
+#define N 16
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -140,7 +140,8 @@ int main(int argc, char *argv[]){
 
     }
     //Initialise local array
-    matrixMemoryAllocate2(&C,part_rows, matrix_size);
+    matrixMemoryAllocate2(&C,matrix_size, matrix_size);
+    matrixInitialiseZeros2(C, matrix_size, matrix_size);
 
 
     MPI_Datatype rowtype;
@@ -170,8 +171,9 @@ int main(int argc, char *argv[]){
         //calculate displacements
         k = 0;
         for(i = 0; i < grid_size; i ++){ 
-            dispals[k] = i *(part_rows * matrix_size);
-            k++;
+            //dispals[k] = i *(part_rows * matrix_size);
+            dispals[i] = k;
+            k+=part_rows;
         }
 
         for(i = 0; i < grid_size; i ++){ 
