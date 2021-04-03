@@ -32,6 +32,9 @@ int **A;
 int **B;
 int **C; //Three Matrices
 
+int **local_row_matrix;
+int **local_column_matrix;
+
 /*
 Defining prototypes for function
 */
@@ -50,7 +53,8 @@ void matrixMultiplicationMPI(int **, int **, int **, int);
 MPI_Datatype createSubarrayRows(int, int);
 MPI_Datatype createSubarrayColumns(int, int);
 
-void scatterRows(int **, int **, int , int , int , int P, MPI_Datatype);
+void scatterRows(int **, int **, int , int , int , int , MPI_Datatype);
+void scatterColumns(int **, int **, int , int , int ,int , MPI_Datatype );
 
 
 int matrix_size;//global variable used by diagonal pthreads
@@ -129,9 +133,6 @@ int main(int argc, char *argv[]){
         MPI_Abort(MPI_COMM_WORLD,1);
     }
 
-     //Time to create row and column datatypes
-    MPI_Datatype columntype, tmp;
-    MPI_Status stat;
 
     /**
      * @brief if process is p0 initialise
@@ -140,18 +141,40 @@ int main(int argc, char *argv[]){
      */
 
     if(myrank == 0){
+        //Initialise Array and B
         matrixMemoryAllocate(&A,matrix_size);
         matrixInitialise(A, matrix_size);
+        
+
+        matrixMemoryAllocate(&B,matrix_size);
+        matrixInitialise(B, matrix_size);
 
     }
     //Initialise local array
-    matrixMemoryAllocate2(&C,matrix_size, matrix_size);
-    matrixInitialiseZeros2(C, matrix_size, matrix_size);
+    matrixMemoryAllocate2(&local_row_matrix,matrix_size, matrix_size);
+    matrixInitialiseZeros2(local_row_matrix, matrix_size, matrix_size);
 
-    
+    matrixMemoryAllocate2(&local_column_matrix,matrix_size, matrix_size);
+    matrixInitialiseZeros2(local_column_matrix,matrix_size, matrix_size );
+
+    //Time to create row and column datatypes
+    MPI_Status stat;
     MPI_Datatype rowtype = createSubarrayRows(part_rows, matrix_size);
+    MPI_Datatype columntype = createSubarrayColumns(part_columns, matrix_size);
 
-    scatterRows(A, C, matrix_size, part_rows,  myrank, P, rowtype);
+    if(myrank == 0){
+        printf("*************************************************\n");
+        printf("Scattering Elements in matrix A to a local array \n \n \n");
+    }
+
+    scatterRows(A, local_row_matrix, matrix_size, part_rows,  myrank, P, rowtype);
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(myrank == 0){
+        printf("*************************************************\n");
+        printf("Scattering Elements in matrix B to a local array \n \n \n");
+    }
+    scatterColumns(B, local_column_matrix, matrix_size, part_columns, myrank, P, columntype);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     
     
@@ -162,8 +185,8 @@ int main(int argc, char *argv[]){
     //free(A[0]);
     //free(A);
 
-    free(C[0]);
-    free(C);
+    //free(C[0]);
+    //free(C);
 
     MPI_Finalize();
     return (EXIT_SUCCESS);
@@ -189,7 +212,7 @@ MPI_Datatype createSubarrayColumns(int partition, int size){
         int bigsizes[2] = {size, size};
 
         MPI_Type_create_subarray(2, bigsizes, subsizes, starts, MPI_ORDER_C, MPI_INT, &tmp);
-        MPI_Type_create_resized(tmp, 0, matrix_size*sizeof(int), &type);
+        MPI_Type_create_resized(tmp, 0, partition*sizeof(int), &type);
         MPI_Type_commit(&type);
 
         return type;
@@ -241,6 +264,54 @@ void scatterRows(int **source_matrix, int **dest_matrix, int matrix_size, int pa
         MPI_Barrier(MPI_COMM_WORLD);
     }
 }
+
+void scatterColumns(int **source_matrix, int **dest_matrix, int matrix_size, int part_columns, int myrank, int P, MPI_Datatype columntype){
+    int i,j,k;
+    const int sender = 0;
+
+    int *globalptr = NULL;
+
+    if(myrank == 0){
+        globalptr = &(source_matrix[0][0]);
+    }
+    int send_counts[matrix_size/part_columns];
+    int dispals[matrix_size/part_columns];
+    int grid_size = matrix_size/part_columns;
+
+    if(myrank == 0){
+    
+        for(i = 0; i < grid_size; i ++){
+            send_counts[i]= 1;
+        }
+
+        //calculate displacements
+        k = 0;
+        for(i = 0; i < grid_size; i ++){ 
+            //dispals[k] = i *(part_rows * matrix_size);
+            dispals[i] = k;
+            k+=1;
+        }
+
+        for(i = 0; i < grid_size; i ++){ 
+        printf("%d ", dispals[i]);
+        }
+        printf("\n");
+    }
+
+
+    
+    MPI_Scatterv(globalptr, send_counts, dispals, columntype, &(dest_matrix[0][0]),matrix_size * part_columns, MPI_INT, sender, MPI_COMM_WORLD);
+
+    /* now all processors print their local data: */
+    for(j = 0; j < P; j ++){
+        if(myrank == j){
+            printf("Local process on rank %d is: \n", myrank);
+            matrixDisplay2(dest_matrix, part_columns, matrix_size);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+}
+
 
 /**
  * @brief dynamically creates a 2 dimensional array
