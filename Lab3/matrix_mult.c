@@ -34,6 +34,7 @@ int **C; //Three Matrices
 
 int **local_row_matrix;
 int **local_column_matrix;
+int **local_mult_matrix ;
 
 /*
 Defining prototypes for function
@@ -74,12 +75,12 @@ int **allocarray(int n);
 
 int main(int argc, char *argv[]){
 
-    /*time_t work_time;
+    time_t work_time;
 
-    /*Create Matrix A,B,C and initilise it
-    A = matrixMemoryAllocate(matrix_size);
-    B = matrixMemoryAllocate(matrix_size);
-    C = matrixMemoryAllocate(matrix_size);
+    //Create Matrix A,B,C and initilise it
+    matrixMemoryAllocate(&A,matrix_size);
+    matrixMemoryAllocate(&B,matrix_size);
+    matrixMemoryAllocate(&C,matrix_size);
 
     //initialisation of matrices
     matrixInitialise(A, matrix_size);
@@ -87,21 +88,27 @@ int main(int argc, char *argv[]){
     matrixInitialiseZeros(C, matrix_size);
 
     
-    /*Compute A*B
+    //Compute A*B
     work_time = clock();
     matrixMultiplicationNaive(A , B ,C ,matrix_size);
     work_time = clock() - work_time;
     printf("Time taken by matrixMultiplicationNaive(): %f s\n\n", 
     ((double)work_time)/CLOCKS_PER_SEC);
 
+    printf("Matrix C from serial: \n");
+    matrixDisplay(C, matrix_size);
+    printf("\n \n");
+
     /**
      * @brief Free memory of matrices
      * after sequential execution
      * 
+     *
+    **/
      
-
+    free(A);
     free(B);
-    free(C); */
+    free(C); 
 
     /**
      * @brief MPI Implementation of Matrix multiplication
@@ -149,6 +156,9 @@ int main(int argc, char *argv[]){
         matrixMemoryAllocate(&B,matrix_size);
         matrixInitialise(B, matrix_size);
 
+        matrixMemoryAllocate(&C,matrix_size);
+        matrixInitialiseZeros(C, matrix_size);
+
     }
     //Initialise local array
     matrixMemoryAllocate2(&local_row_matrix,matrix_size, matrix_size);
@@ -156,6 +166,10 @@ int main(int argc, char *argv[]){
 
     matrixMemoryAllocate2(&local_column_matrix,matrix_size, matrix_size);
     matrixInitialiseZeros2(local_column_matrix,matrix_size, matrix_size );
+
+    matrixMemoryAllocate2(&local_mult_matrix,matrix_size, matrix_size);
+    matrixInitialiseZeros2(local_mult_matrix,matrix_size, matrix_size);
+
 
     //Time to create row and column datatypes
     MPI_Status stat;
@@ -167,27 +181,95 @@ int main(int argc, char *argv[]){
         printf("Scattering Elements in matrix A to a local array \n \n \n");
     }
 
+    //scatter rows
     scatterRows(A, local_row_matrix, matrix_size, part_rows,  myrank, P, rowtype);
     MPI_Barrier(MPI_COMM_WORLD);
+
     if(myrank == 0){
         printf("*************************************************\n");
         printf("Scattering Elements in matrix B to a local array \n \n \n");
     }
+    //scatter columns
     scatterColumns(B, local_column_matrix, matrix_size, part_columns, myrank, P, columntype);
     MPI_Barrier(MPI_COMM_WORLD);
 
+    /**
+     * @brief Now let me see your shouting
+     * we are doing the multiplication 
+     * 
+     */
+
+    //first re-oriente column matrix
+    int **
+
+    for(i = 0; i < matrix_size; i++){
+        for(j= 0; j < matrix_size; j++){
+            for(k = 0; k < matrix_size; k++){
+                local_mult_matrix[i][j] += local_row_matrix[i][k] * local_column_matrix[k][j];
+            }
+        }
+       
+    }
+
+    for(j = 0; j < P; j ++){
+        if(myrank == j){
+            printf("Local process on rank %d is: \n", myrank);
+            matrixDisplay2(local_mult_matrix, part_rows, matrix_size);
+            printf("\n \n");
+
+            
+        }
+
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    /**
+     * @brief Gathering results from local matrix
+     * to matrix C
+     * 
+     */
+    const int sender = 0;
+
+    int *globalptr = NULL;
+
+    if(myrank == 0){
+        globalptr = &(C[0][0]);
+    }
+    int send_counts[matrix_size/part_rows];
+    int dispals[matrix_size/part_rows];
+    int grid_size = matrix_size/part_rows;
+    if(myrank == 0){
     
+        for(i = 0; i < grid_size; i ++){
+            send_counts[i]= 1;
+        }
+
+        //calculate displacements
+        k = 0;
+        for(i = 0; i < grid_size; i ++){ 
+            //dispals[k] = i *(part_rows * matrix_size);
+            dispals[i] = k;
+            k+=part_rows;
+        }
+    }
+
+
+    MPI_Gatherv(&(local_mult_matrix[0][0]), part_rows * matrix_size, MPI_INT, globalptr, send_counts, dispals, rowtype ,sender, MPI_COMM_WORLD);
+
+    //free local memory
+    free(local_column_matrix);
+    free(local_mult_matrix);
+    free(local_row_matrix);
+
+    //free MPI Datatypes
+    MPI_Type_free(&rowtype);
+    MPI_Type_free(&columntype);
+
+    if(myrank == 0){
+        printf("Matrix C results MPI implementation : \n");
+        matrixDisplay2(C, matrix_size, matrix_size);
+    }
     
-    
-
-    //MPI_Type_free(&rowtype);
-
-    //free(A[0]);
-    //free(A);
-
-    //free(C[0]);
-    //free(C);
-
     MPI_Finalize();
     return (EXIT_SUCCESS);
 }
@@ -245,9 +327,6 @@ void scatterRows(int **source_matrix, int **dest_matrix, int matrix_size, int pa
             k+=part_rows;
         }
 
-        for(i = 0; i < grid_size; i ++){ 
-        printf("%d ", dispals[i]);
-        }
         printf("\n");
     }
 
@@ -257,7 +336,7 @@ void scatterRows(int **source_matrix, int **dest_matrix, int matrix_size, int pa
 
     /* now all processors print their local data: */
     for(j = 0; j < P; j ++){
-        if(myrank == j){
+        if(myrank == 0){
             printf("Local process on rank %d is: \n", myrank);
             matrixDisplay2(dest_matrix, part_rows, matrix_size);
         }
@@ -287,24 +366,19 @@ void scatterColumns(int **source_matrix, int **dest_matrix, int matrix_size, int
         //calculate displacements
         k = 0;
         for(i = 0; i < grid_size; i ++){ 
-            //dispals[k] = i *(part_rows * matrix_size);
             dispals[i] = k;
             k+=1;
-        }
-
-        for(i = 0; i < grid_size; i ++){ 
-        printf("%d ", dispals[i]);
         }
         printf("\n");
     }
 
 
     
-    MPI_Scatterv(globalptr, send_counts, dispals, columntype, &(dest_matrix[0][0]),matrix_size * part_columns, MPI_INT, sender, MPI_COMM_WORLD);
+    MPI_Scatterv(globalptr, send_counts, dispals, columntype, &(dest_matrix[0][0]),part_columns * matrix_size, MPI_INT, sender, MPI_COMM_WORLD);
 
     /* now all processors print their local data: */
     for(j = 0; j < P; j ++){
-        if(myrank == j){
+        if(myrank == 0){
             printf("Local process on rank %d is: \n", myrank);
             matrixDisplay2(dest_matrix, part_columns, matrix_size);
         }
