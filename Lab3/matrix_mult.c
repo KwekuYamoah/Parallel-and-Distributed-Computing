@@ -195,6 +195,7 @@ int main(int argc, char *argv[]){
     }
     //scatter columns
     scatterColumns(B, local_column_matrix, matrix_size, part_columns, myrank, P, columntype);
+
     
     /**
      * @brief Now let me see your shouting
@@ -204,47 +205,41 @@ int main(int argc, char *argv[]){
     //first re-oriente column matrix
     //transpose source matrix before scattering
     //temp = local_column_matrix;
+   
     int odd=0;
     int even =1;
     int move_odd=0;
     int move_even =0;
     for(i =0; i < part_columns; i ++){
         for(j =0; j < matrix_size; j++){
-           
+        
             if(local_column_matrix[i][j] % 2 == 0){
                 if(move_even > 7){
                     move_even = 0;
                 }
-                temp[move_even++][even] =  local_column_matrix[i][j];
+                temp[even][move_even++] =  local_column_matrix[i][j];
             }
             else{
                 if(move_odd > 7){
                     move_odd = 0;
                 }
-                temp[move_odd++][odd] = local_column_matrix[i][j];
+                temp[odd][move_odd++] = local_column_matrix[i][j];
                 
             }
         }
         
     }
-    if(myrank ==0){
-        printf("Local column matrix:\n");
-        matrixDisplay(temp, matrix_size);
-        printf("\n \n");
-    }
+    int sum = 0;
+    for(k = 0; k < matrix_size/P ;k++){
+        for(i= 0; i < matrix_size; i++){
+            for(j = 0; j < matrix_size; j++){ 
+                sum+= local_row_matrix[k][j] * local_column_matrix[j][i];
+            }  
 
-    
-    for(i = 0; i < part_columns ;i++){
-        for(j= 0; j < matrix_size; j++){
-            for(k = 0; k < matrix_size; k++){
-                
-                local_mult_matrix[i][j] += (local_row_matrix[i][k] * temp[k][j]);
-                  
-            }
-               
+            local_mult_matrix[k][i] = sum;
+            sum =0;
             
         }
-       
     }
 
 
@@ -278,19 +273,28 @@ int main(int argc, char *argv[]){
         }
     }
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
 
     MPI_Gatherv(&(local_mult_matrix[0][0]), part_rows * matrix_size, MPI_INT, globalptr, send_counts, dispals, rowtype ,sender, MPI_COMM_WORLD);
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
     //free local memory
-    free(local_column_matrix);
-    free(local_mult_matrix);
-    free(local_row_matrix);
+    //free(local_column_matrix);
+    //free(local_mult_matrix);
+    //free(local_row_matrix);
 
     //free MPI Datatypes
-    MPI_Type_free(&rowtype);
-    MPI_Type_free(&columntype);
+    //MPI_Type_free(&rowtype);
+    //MPI_Type_free(&columntype);
 
     if(myrank == 0){ 
+        printf("Row matrix: \n");
+        matrixDisplay2(local_row_matrix, part_rows, matrix_size);
+        printf("\nTemp matrix: \n");
+        matrixDisplay2(temp, part_columns, matrix_size);
+        printf("\n\n");
         printf("Matrix C results MPI implementation : \n");
         matrixDisplay2(C, matrix_size, matrix_size);
     }
