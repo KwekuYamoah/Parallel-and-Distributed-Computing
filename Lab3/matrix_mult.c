@@ -187,7 +187,7 @@ int main(int argc, char *argv[]){
 
     //scatter rows
     scatterRows(A, local_row_matrix, matrix_size, part_rows,  myrank, P, rowtype);
-    MPI_Barrier(MPI_COMM_WORLD);
+    
 
     if(myrank == 0){
         printf("*************************************************\n");
@@ -195,8 +195,7 @@ int main(int argc, char *argv[]){
     }
     //scatter columns
     scatterColumns(B, local_column_matrix, matrix_size, part_columns, myrank, P, columntype);
-    MPI_Barrier(MPI_COMM_WORLD);
-
+    
     /**
      * @brief Now let me see your shouting
      * we are doing the multiplication 
@@ -204,41 +203,46 @@ int main(int argc, char *argv[]){
      */
     //first re-oriente column matrix
     //transpose source matrix before scattering
-    
-    k=0;
-    int q =0;
-    for(i =0; i <part_columns; i ++){
-        for(j = 0; j < matrix_size; j+= 2){
-            temp[q][k] = local_column_matrix[i][j];
-            q++;
-            
+    //temp = local_column_matrix;
+    int odd=0;
+    int even =1;
+    int move_odd=0;
+    int move_even =0;
+    for(i =0; i < part_columns; i ++){
+        for(j =0; j < matrix_size; j++){
+           
+            if(local_column_matrix[i][j] % 2 == 0){
+                if(move_even > 7){
+                    move_even = 0;
+                }
+                temp[move_even++][even] =  local_column_matrix[i][j];
+            }
+            else{
+                if(move_odd > 7){
+                    move_odd = 0;
+                }
+                temp[move_odd++][odd] = local_column_matrix[i][j];
+                
+            }
         }
         
+    }
+    if(myrank ==0){
+        printf("Local column matrix:\n");
+        matrixDisplay(temp, matrix_size);
+        printf("\n \n");
     }
 
-    k++;
-    q=0;
-    for(i =0; i <part_columns; i ++){
-        for(j = 1; j < matrix_size; j+= 2){
-            temp[q][k] = local_column_matrix[i][j];
-            q++;
-            
-        }
-        
-    }
-   
     
-    for(i = 0; i < part_rows ;i++){
+    for(i = 0; i < part_columns ;i++){
         for(j= 0; j < matrix_size; j++){
             for(k = 0; k < matrix_size; k++){
-                for(int m = 0; m < P; m++){
-                    if(myrank == m){
-                         local_mult_matrix[i][j] += local_row_matrix[i][k] * temp[k][j];
-                    }
-                }
-               
+                
+                local_mult_matrix[i][j] += (local_row_matrix[i][k] * temp[k][j]);
+                  
             }
-            MPI_Barrier(MPI_COMM_WORLD);
+               
+            
         }
        
     }
