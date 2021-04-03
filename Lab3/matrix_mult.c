@@ -233,11 +233,11 @@ int main(int argc, char *argv[]){
     for(k = 0; k < matrix_size/P ;k++){
         for(i= 0; i < matrix_size; i++){
             for(j = 0; j < matrix_size; j++){ 
-                sum+= local_row_matrix[k][j] * local_column_matrix[j][i];
+                sum+= local_row_matrix[j][k] * local_column_matrix[j][i];
             }  
 
             local_mult_matrix[k][i] = sum;
-            sum =0;
+            sum = 0;
             
         }
     }
@@ -290,11 +290,6 @@ int main(int argc, char *argv[]){
     //MPI_Type_free(&columntype);
 
     if(myrank == 0){ 
-        printf("Row matrix: \n");
-        matrixDisplay2(local_row_matrix, part_rows, matrix_size);
-        printf("\nTemp matrix: \n");
-        matrixDisplay2(temp, part_columns, matrix_size);
-        printf("\n\n");
         printf("Matrix C results MPI implementation : \n");
         matrixDisplay2(C, matrix_size, matrix_size);
     }
