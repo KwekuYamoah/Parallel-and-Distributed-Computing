@@ -23,7 +23,8 @@
  * N=2048
  * N=4096
  */
-#define N 8
+
+#define N 128
 #define N1 1024
 #define N2 2048
 #define N3 4096
@@ -60,7 +61,7 @@ void scatterColumns(int **, int **, int , int , int ,int , MPI_Datatype );
 
 
 int matrix_size;//global variable used by diagonal pthreads
-int matrix_size= N; //work around to make matrix size globally accesible
+int matrix_size= N2; //work around to make matrix size globally accesible
 
 
 /**
@@ -76,7 +77,8 @@ int **allocarray(int n);
 
 int main(int argc, char *argv[]){
 
-    time_t work_time;
+    time_t work_time; 
+    double start,end;
 
     //Create Matrix A,B,C and initilise it
     matrixMemoryAllocate(&A,matrix_size);
@@ -93,12 +95,7 @@ int main(int argc, char *argv[]){
     work_time = clock();
     matrixMultiplicationNaive(A , B ,C ,matrix_size);
     work_time = clock() - work_time;
-    //printf("Time taken by matrixMultiplicationNaive(): %f s\n\n", 
-    //((double)work_time)/CLOCKS_PER_SEC);
-
-    //printf("Matrix C from serial: \n");
-    //matrixDisplay(C, matrix_size);
-    //printf("\n \n");
+    
 
     /**
      * @brief Free memory of matrices
@@ -117,7 +114,7 @@ int main(int argc, char *argv[]){
      */
     int myrank, P; // rank of current process and no. of processes
     int part_rows, part_columns, i, j, k;
-    int tag = 100;
+    int tag = 10;
 
    
     const int receiver=1;
@@ -126,6 +123,7 @@ int main(int argc, char *argv[]){
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
     MPI_Comm_size(MPI_COMM_WORLD, &P);
+    start = MPI_Wtime();
 
     part_rows = sqrt(P); //Will be passed to matrix A and partitioned into sqrt(P) rows
     part_columns = sqrt(P); //Will be passed to matrix B and partitioned into sqrt(P) columns
@@ -147,6 +145,8 @@ int main(int argc, char *argv[]){
      * Matrices A, B & C
      * 
      */
+
+    
 
     if(myrank == 0){
         //Initialise Array and B
@@ -280,21 +280,36 @@ int main(int argc, char *argv[]){
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    end = MPI_Wtime() - start;
+    double totalTime;
+    MPI_Reduce( &end, &totalTime, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD );
+
     //free local memory
-    //free(local_column_matrix);
-    //free(local_mult_matrix);
-    //free(local_row_matrix);
+    free(local_column_matrix);
+    free(local_mult_matrix);
+    free(local_row_matrix);
 
     //free MPI Datatypes
-    //MPI_Type_free(&rowtype);
-    //MPI_Type_free(&columntype);
+    MPI_Type_free(&rowtype);
+    MPI_Type_free(&columntype);
 
-    if(myrank == 0){ 
-        printf("Matrix C results MPI implementation : \n");
-        matrixDisplay2(C, matrix_size, matrix_size);
+    if(myrank == 0){
+        printf("Time taken by Serial Matrix Multiplication: %f s\n\n", 
+        ((double)work_time)/CLOCKS_PER_SEC);
+
+        double t_time  = end  - start;
+
+        printf("**************************** \n");
+        printf("Time taken by MPI Matrix Multiplication: %f s\n\n", totalTime/=P);
+
     }
     
     MPI_Finalize();
+
+    //free(A);
+    //free(B);
+    //free(C);
+    //free(temp);
     return (EXIT_SUCCESS);
 }
 
