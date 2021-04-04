@@ -16,3 +16,12 @@ The document was typeset using latex. The folder containing all the latex file i
 To view the code files that were implemented and run to generate the output log for the comparative table in the report visit: [Lab2 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab2)
 
 When you get to the above link compile and run the file `naive_ompMT.c` in your Linux environment.
+
+## Lab 3 Report
+The report for Lab2 is titled us `KwekuYamoah(71712022)-Lab3Report`. You can find the file at link: [Lab 2 Report](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/88d71a2eb3701d7c36774cd4140bf21e36e2c614/README.md#L14)
+
+The document was typeset using latex. The folder containing all the latex file is found at the link: [Lab2 Latex TypeSet](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/88d71a2eb3701d7c36774cd4140bf21e36e2c614/README.md#L12)
+
+To view the code files that were implemented and run to generate the output log for the comparative table in the report visit: [Lab2 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab2)
+
+When you get to the above link compile and run the file `naive_ompMT.c` in your Linux environment.
