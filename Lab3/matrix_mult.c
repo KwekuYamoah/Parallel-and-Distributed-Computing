@@ -61,7 +61,7 @@ void scatterColumns(int **, int **, int , int , int ,int , MPI_Datatype );
 
 
 int matrix_size;//global variable used by diagonal pthreads
-int matrix_size= N2; //work around to make matrix size globally accesible
+int matrix_size= N; //work around to make matrix size globally accesible
 
 
 /**
@@ -294,13 +294,13 @@ int main(int argc, char *argv[]){
     MPI_Type_free(&columntype);
 
     if(myrank == 0){
-        printf("Time taken by Serial Matrix Multiplication: %f s\n\n", 
+        printf("Time taken by Serial Matrix Multiplication with : %f s\n\n",
         ((double)work_time)/CLOCKS_PER_SEC);
 
         double t_time  = end  - start;
 
         printf("**************************** \n");
-        printf("Time taken by MPI Matrix Multiplication: %f s\n\n", totalTime/=P);
+        printf("Time taken by MPI Matrix Multiplication P processors=%d: %f s\n\n", matrix_size, totalTime/=P);
 
     }
     
@@ -560,11 +560,4 @@ void matrixMultiplicationNaive(int **matrix_a,int **matrix_b,int **matrix_c, int
             }
         }
     }
-}
-
-
-void matrixMultiplicationMPI(int **matrix_a, int **matrix_b, int **matrix_c, int size){
-
-    
-
 }
