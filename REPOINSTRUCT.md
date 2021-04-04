@@ -47,7 +47,7 @@ Read documentation for lab 1 at [Lab 1 Docs Readme](https://github.com/KwekuYamo
 Read documentation for lab 2 at [Lab 2 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-2-report)
 
 ## Lab 3 Documentation Instructions
-Read documentation for lab 3 at [Lab 3 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-3-report). For Lab 3 it is essential that you read and understand the report file thoroughly.
+Read documentation for lab 3 at [Lab 3 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-3-report). For Lab 3 it is essential that you read and understand the report file thoroughly. Make sure you have MPICH installed before you clone and run the files for lab3
 
 
 # Conclusion
