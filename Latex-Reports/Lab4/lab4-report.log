@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.3)  17 APR 2021 00:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.4.3)  19 APR 2021 21:11
 entering extended mode
 **/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex
 (/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex
@@ -295,26 +295,31 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 18.
 [1
 
-{/home/kayems/.miktex/texmfs/data/pdftex/config/pdftex.map}]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+{/home/kayems/.miktex/texmfs/data/pdftex/config/pdftex.map}]
+Overfull \hbox (0.251pt too wide) in paragraph at lines 27--28
+[]\OT1/cmr/m/n/12 it has an extensive documentation with examples as reference, which, makes learning
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.23 \end{document}
+l.36 \end{document}
                     [1] (/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.aux)
 Package rerunfilecheck Info: File `lab4-report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 8461 strings out of 481257
- 126976 string characters out of 2908297
- 418890 words of memory out of 3000000
- 25586 multiletter control sequences out of 15000+600000
- 405853 words of font info for 35 fonts, out of 8000000 for 9000
+ 8468 strings out of 481257
+ 127059 string characters out of 2908297
+ 422890 words of memory out of 3000000
+ 25589 multiletter control sequences out of 15000+600000
+ 406497 words of font info for 37 fonts, out of 8000000 for 9000
  0 hyphenation exceptions out of 8191
- 71i,6n,74p,297b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
-</home/kayems/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/kayems/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on /home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf (2 pages, 26262 bytes).
+ 71i,6n,74p,445b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/kayems/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk></home/kayems/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/kayems/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on /home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf (2 pages, 37153 bytes).
 PDF statistics:
- 24 PDF objects out of 1000 (max. 8388607)
- 4 named destinations out of 1000 (max. 500000)
+ 34 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

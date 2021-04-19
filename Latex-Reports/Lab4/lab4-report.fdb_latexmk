@@ -1,7 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1618619412 "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex" "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf" "lab4-report" 1618619413
+["pdflatex"] 1618866667 "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex" "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf" "lab4-report" 1618866667
+  "/home/kayems/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1200.pk" 1615450180 14064 84484159bb1d598eff7b493504f0b3dd ""
   "/home/kayems/.miktex/texmfs/data/miktex/data/le/pdftex/pdflatex.fmt" 1617484158 6307356 f7e44dc247ddf882a234fa07e40ff97b ""
   "/home/kayems/.miktex/texmfs/data/pdftex/config/pdftex.map" 1617484267 25648 05532b267bee6ddc7a89371aadda7555 ""
+  "/home/kayems/.miktex/texmfs/install/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1615450010 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "/home/kayems/.miktex/texmfs/install/fonts/tfm/public/cm/cmbx12.tfm" 1615446781 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/home/kayems/.miktex/texmfs/install/fonts/tfm/public/cm/cmmi12.tfm" 1615446781 1524 4414a8315f39513458b80dfc63bff03a ""
   "/home/kayems/.miktex/texmfs/install/fonts/tfm/public/cm/cmr12.tfm" 1615446781 1288 655e228510b4c2a1abe905c368440826 ""
@@ -60,15 +62,15 @@
   "/home/kayems/.miktex/texmfs/install/tex/latex/refcount/refcount.sty" 1615449885 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/home/kayems/.miktex/texmfs/install/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1615449795 9715 b051d5b493d9fe5f4bc251462d039e5f ""
   "/home/kayems/.miktex/texmfs/install/tex/latex/url/url.sty" 1615449680 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.aux" 1618619413 686 4ce905362b6645b598ea182482e9aeed ""
-  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex" 1618619412 449 9750db157e53227188c1981d5f24bbfb ""
-  "lab4-report.aux" 1618619413 686 4ce905362b6645b598ea182482e9aeed "pdflatex"
-  "lab4-report.out" 1618619413 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "lab4-report.tex" 1618619412 449 9750db157e53227188c1981d5f24bbfb ""
+  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.aux" 1618866667 686 4ce905362b6645b598ea182482e9aeed ""
+  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.tex" 1618866666 1731 fca01ae62a7b9cba2ecd8ec96a47ba77 ""
+  "lab4-report.aux" 1618866667 686 4ce905362b6645b598ea182482e9aeed "pdflatex"
+  "lab4-report.out" 1618866667 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "lab4-report.tex" 1618866666 1731 fca01ae62a7b9cba2ecd8ec96a47ba77 ""
   (generated)
+  "lab4-report.pdf"
   "lab4-report.log"
   "lab4-report.aux"
   "lab4-report.out"
-  "lab4-report.pdf"
-  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf"
   "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.log"
+  "/home/kayems/Documents/Parallel-and-Distributed-Computing/Latex-Reports/Lab4/lab4-report.pdf"
