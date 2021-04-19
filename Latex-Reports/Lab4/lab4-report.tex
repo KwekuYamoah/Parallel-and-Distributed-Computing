@@ -29,7 +29,31 @@
     Installing MrJob was easy because it require running a command with the python pip package. However, understanding the documentation and how to submit my first job took some time to understand.
 
     \subsection*{Word-count Algorithm}
-        The word count algorithm inherited the \textbf{MrJob}
+        Firstly, the word-count algorithm prints out the frequency of each word in a text file.
+
+        The word count algorithm inherited the \textbf{MrJob} class to implement a job that executes the task. This job class required the implementation of the methods \textbf{mapper\_init, configure\_args, mapper and reducer}. 
+            \begin{itemize}
+                \item The \emph{configure\_args} method creates command-line options. I used tis to pass the stop words file as a command line argument.
+                \item The \emph{mapper\_init} method initializes or setups the resources that the mapper method needs. I read the stop words and converted the words to a python set in this method.
+                \item \emph{mapper} method splits every sentence from the text file into words.
+                All the stop words are removed before further processing. The method
+                finally returns a key-value pair consisting of the word as the key and a one as the value for every word. E.g., word, 1.
+                \item \emph{reducer} method in this program acts as a combiner and a reducer
+                at the same time. This method finds the occurrences of each word in the
+                text by summing up the results from the mapper method passed to it.
+                The output of the reducer method is a key-value pair containing a word
+                as the key and the value as the number of times it appears in the text.
+            \end{itemize}
+    \subsection*{Running the Program}
+            The program needs some requirements to be satisfied first before running.
+                \begin{itemize}
+                    \item The program requires python 3 or later to run.
+                    \item The program requires the correct command-line arguments to be passed before it can run.
+                    \item The program must be run on a Linux subsystem; Ubuntu is preferred.
+                \end{itemize}
+            
+            To run the program type this in your terminal whilst ensuring that you are in the directory which contains the program files;
+            \textbf{python3 mrjob\_wordcount.py $<$input.txt --stop-words$=$stop\_words.txt}
 
 \section*{Part 2}
 
