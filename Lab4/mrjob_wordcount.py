@@ -9,6 +9,8 @@ from mrjob.job import MRJob
 from mrjob.step import MRStep
 import re 
 
+WORD_RE = re.compile(r"[\w']+")
+
 class MRWordCount(MRJob):
     """
     This program counts the number times
