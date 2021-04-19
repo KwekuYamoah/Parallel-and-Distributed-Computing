@@ -1,0 +1,557 @@
+        Personal Computers were first available on the mass market in 
+        1977.  At that time there were basically three brands widely 
+        available, Apple, Tandy, and Commodore.  I bought a TRS-80 model 
+        I in the fall of that year and began computer consulting the 
+        next spring.  Things have changed a lot in the last 14 years.  
+        These are a few observations on some of the developments and 
+        trends.
+        In the early 1980s a man would come to me and say, "I have a 
+        problem in my business.  It concerns efficiency in office 
+        procedures.  I am covered up in writing, bookkeeping, billing, 
+        paying, keeping track of customers, etc.  They said you have 
+        been able to show other businesses how to use computers to solve 
+        these problems.  Please show me."
+        I would then analyse his business talking not only to him but 
+        primarily to his secretary and/or bookkeeper(s) to find just how 
+        his business ran, what the problems were, and what was unique 
+        about his business (something almost always was).  I would plan 
+        hardware and develop software designed to work efficiently to 
+        solve his problems and to grow with his business for the next 
+        five or (wistfully) ten years.  I would install the system, 
+        train his employees and support the system with further 
+        modifications, hardware and software maintenance, additional 
+        training, etc. as needed.  This worked well and was always 
+        successful. 
+        Now a man comes to me and says, "I have a problem in my 
+        business.  I heard computerizing would solve my problem, so I 
+        read the computer magazines, talked to the computer literacy 
+        instructor at the high school, talked to a number of computer 
+        salesmen, and asked a computer whiz I know who has three 
+        computers and unbelievable games on them (He has the highest 
+        score in town on "Shoot The Martians").  All these people told 
+        me that my problems would be solved if I got a 386 with 4 meg 
+        RAM, 40 meg. hard drive, VGA, laser printer, Windows, Lotus 123, 
+        Dbase and Wordperfect."
+        "I bought all these, spent months reading the manuals and 
+        installing it all, and got the computer whiz to come by when 
+        school was out and show my employees how to use it all.   And, 
+        you know, I still have the problem in my business.  As a matter 
+        of fact my employees spend so much time using and learning the 
+        new computer system that I've had to hire an additional employee 
+        to make sure we get the billing out each month.  Now, they say 
+        you have solved business problems for others with computers, so 
+        I am willing to pay you to show me how to use this stuff to 
+        solve my problems."
+        I explain to this man that I was able to solve other's problems 
+        by an analysis of their business and by developing or installing 
+        software specifically for that purpose, that this will not use 
+        all the memory, Windows, 123, and Dbase that he has already 
+        installed, that I use cheaper hardware and charge more for 
+        systems analysis and custom programming and that therefore 
+        solving his problems will require an additional investment of 
+        $2,000 or more and that probably $2,000 of his original 
+        investment will be useless to him.  He usually concludes at this 
+        point that I must not know much about computers.  He ends up 
+        using parts of whatever of his software he can and decides that 
+        computers can't really do as much as he had been led to believe 
+        after all. 
+         
+        This problem arises primarily because of the way the computer 
+        industry has marketed computers and software in the last 14 
+        years.  In the first stage the industry said, "Buy a computer!"  
+        John Q. Public said, "Why?" and the industry said, "Because they 
+        can do anything you tell them."  The problem was JQP didn't know 
+        what he wanted them to do and he didn't know how to tell them to 
+        do it anyway.  So a couple of real smart guys wrote Visicalc, 
+        the first spreadsheet program for microcomputers.  JQP found 
+        that for some things that he was already doing on paper 
+        spreadsheets, a computer with VC was much more efficient. If he 
+        knew how to design a spreadsheet on paper, he could do the same 
+        thing on the computer and increase productivity immensely.  He 
+        was programming a computer but he didn't know that.  
+        The industry marketing men saw what had happened and changed 
+        their tactic.  They now said, "Buy a computer so you can run 
+        VC."  And a number of accountants and other number crunchers did 
+        just that.  As a matter of fact some of the more savvy salesmen 
+        began giving away pirated copies of VC with each computer sale.  
+        Their profit was on hardware, not software.  Many salesmen who 
+        had never used a paper spreadsheet much less VC told people that 
+        to do anything now they just needed a computer and VC.  When 
+        asked what type of thing they might do the computer salesman 
+        replied that JQP could now balance his checkbook with a 
+        computer.  Never mind that if JQP didn't know how to balance a 
+        checkbook the computer wasn't going to help and if he did he 
+        certainly didn't need a computer for that.
+        The next development of interest was the discovery that if one 
+        knew how to type he could increase productivity immensely with a 
+        word processing program.  This then developed much the same way
+        as the VC phenomena.   
+        From the beginning the computer marketers and the media had 
+        envisioned a computer in every household.  Problem was that, so 
+        far, computers were selling primarily to accountants and 
+        typists.  Apple computer decided that the thing standing in the 
+        way of more computer sales was the fact that not enough people 
+        knew how to use a spreadsheet or to type.  Hence the GUI 
+        (Graphical Computer Interface) and the mouse.  Theoretically, we 
+        could throw away the keyboard now and everyone could own a 
+        computer.  Of course, since this didn't teach one to do 
+        accounting or use a spreadsheet and since you couldn't write a 
+        document with a mouse there was no reason to buy a computer, but 
+        Apple overlooked that.  As a matter of fact, after the 
+        introduction of the Macintosh, Apple probably would have gone 
+        out of business if not for one further development. 
+        Someone, (I don't know who but somebody does) came up with the 
+        idea of using the Macintosh for Desktop Publishing, a quantum 
+        extension of word processing which was ideally suited to a GUI 
+        and a mouse.  (Course, it also required a keyboard but that was 
+        OK.)  This sold so many Macs that Microsoft and IBM took notice 
+        and decided that a GUI must be the way to go.
+
+        Others decided that part of the problem with computer sales was 
+        that computers require programs and JQP could not or was afraid 
+        to program.  So they wrote applications that would help JQP to 
+        write his own programs but would not let him know that he was 
+        doing so.  These took the form of Dbase type programs and a 
+        tremendous increase in the size and complexity of VC which by 
+        now was owned by Lotus and was called 123.  The thing they 
+        didn't tell JQP was that by trying to force a computer to do 
+        something with such a general purpose tool as Dbase or 123, he 
+        was sacrificing efficiency and that if the application became 
+        very complex it could be programmed and would work much more 
+        efficiently and easily in a true programming language like 
+        pascal, or C, or compiled basic or whatever.  They also didn't 
+        tell JQP that a complex application would be just as hard to 
+        program in Dbase or 123 as in a true language even though it 
+        would not work nearly as well. I knew a hospital controller who 
+        tried to run a hospital billing and accounting system with 123.  
+        You can drill a hole with a hammer and nails too, but a drill is 
+        so much more efficient. 
+        From the very beginning the problem was that computers could 
+        perform miracles in efficiency but only the systems analysts and 
+        the programmers knew how.  The marketing planners and the 
+        salesmen didn't, so they misled JQP.  Those who most need 
+        computers, mostly businessmen, are not analysts or programmers 
+        and should not be.  There were never enough programmers and 
+        analysts to sell the number of computers the industry wanted to 
+        sell.  Therefore, efficiency was sacrificed by use of general 
+        purpose programs.  Although these usually did not do the job 
+        well (sometimes not at all), they were cheaper than efficient 
+        programs and they were available.  The hoax was that JQP was 
+        never told that use of these programs required a sacrifice of 
+        efficiency but was simply led to believe that the inadequacies 
+        of these programs was intrinsic to computers. 
+        Another hoax occurred as the price of computer hardware and 
+        software fell.  It is necessary to charge $3,000 to $5,000 for a 
+        computer system to justify enough profit to support the 
+        industry.  At first, the price could be maintained by simply 
+        selling more powerful and faster hardware and software to JQP 
+        for the same price that he was used to paying.  After a while 
+        though, it became evident that the hardware and software was 
+        already as fast as JQP could ever want to perform most 
+        applications.  The solution was to change the operating system 
+        to OS2 and to GUIs such as Windows that were inefficient in 
+        speed and in use of memory.  By convincing the public that these 
+        were necessary it became possible to sell even faster machines 
+        with increased memory, etc.
+        These are my nominations for most significant developments in 
+        microcomputers over the last 14 years with my designation of 
+        each as a right turn or a wrong turn for the industry.
+
+This article is about the poet and playwright. For other persons of 
+the same name, see William Shakespeare (disambiguation). For other uses 
+of "Shakespeare", see Shakespeare (disambiguation).
+William Shakespeare (bapt. 26 April 1564 – 23 April 1616)[a] was an 
+English poet, playwright, and actor, widely regarded as the greatest 
+writer in the English language and the world's greatest dramatist.
+ He is often called England's national poet and the 
+"Bard of Avon" (or simply "the Bard"). His extant works, including 
+collaborations, consist of some 39 plays,[c] 154 sonnets, two long 
+narrative poems, and a few other verses, some of uncertain authorship.
+His plays have been translated into every major living language and 
+are performed more often than those of any other playwright.[7]
+Shakespeare was born and raised in Stratford-upon-Avon, Warwickshire.
+At the age of 18, he married Anne Hathaway, with whom he had three 
+children: Susanna and twins Hamnet and Judith. Sometime between 1585 
+and 1592, he began a successful career in London as an actor, writer,
+and part-owner of a playing company called the Lord Chamberlain's Men, 
+later known as the King's Men. At age 49 (around 1613), he appears 
+to have retired to Stratford, where he died three years later. Few 
+records of Shakespeare's private life survive; this has stimulated 
+considerable speculation about such matters as his physical appearance,
+his sexuality, his religious beliefs, and whether the works attributed 
+to him were written by others.[8][9][10]
+Shakespeare produced most of his known works between 1589 and 1613.
+His early plays were primarily comedies and histories and 
+are regarded as some of the best work produced in these genres. Until
+about 1608, he wrote mainly tragedies, among them Hamlet, Othello, King 
+Lear, and Macbeth, all considered to be among the finest works in the 
+English language.[2][3][4] In the last phase of his life, he wrote 
+tragicomedies (also known as romances) and collaborated with other 
+playwrights. Many of Shakespeare's plays were published in editions 
+of varying quality and accuracy in his lifetime. However, in 1623, 
+two fellow actors and friends of Shakespeare's, John Heminges and 
+Henry Condell, published a more definitive text known as the First 
+Folio, a posthumous collected edition of Shakespeare's dramatic 
+works that included all but two of his plays.[13] The volume was 
+prefaced with a poem by Ben Jonson, in which Jonson presciently hails
+Shakespeare in a now-famous quote as "not of an age, but for all time"
+Throughout the 20th and 21st centuries, Shakespeare's works have been 
+continually adapted and rediscovered by new movements in scholarship 
+and performance. His plays remain popular and are studied, performed, 
+and reinterpreted through various cultural and political contexts 
+around the world. 
+William Shakespeare was the son of John Shakespeare, an alderman and 
+a successful glover (glove-maker) originally from Snitterfield, and
+Mary Arden, the daughter of an affluent landowning farmer. He was born 
+in Stratford-upon-Avon and baptised there on 26 April 1564. His actual 
+date of birth remains unknown, but is traditionally observed on 23 April, 
+Saint George's Day.[15] This date, which can be traced to a mistake made 
+by an 18th-century scholar, has proved appealing to biographers because
+Shakespeare died on the same date in 1616.[16][17] He was the third of 
+eight children, and the eldest surviving son. 
+Although no attendance records for the period survive, most biographers 
+agree that Shakespeare was probably educated at the King's New School 
+in Stratford,[19][20][21] a free school chartered in 1553,[22] about a 
+quarter-mile (400 m) from his home. Grammar schools varied in quality 
+during the Elizabethan era, but grammar school curricula were largely 
+similar: the basic Latin text was standardised by royal decree, and the 
+school would have provided an intensive education in grammar based upon 
+Latin classical authors
+At the age of 18, Shakespeare married 26-year-old Anne Hathaway. The cons
+istory court of the Diocese of Worcester issued a marriage licence on 27 
+November 1582. The next day, two of Hathaway's neighbours posted bonds 
+guaranteeing that no lawful claims impeded the marriage.[26] The ceremony
+may have been arranged in some haste since the Worcester chancellor allowed 
+the marriage banns to be read once instead of the usual three times, and six 
+months after the marriage Anne gave birth to a daughter, Susanna, baptised
+26 May 1583.[29] Twins, son Hamnet and daughter Judith, followed almost 
+two years later and were baptised 2 February 1585.[30] Hamnet died of
+unknown causes at the age of 11 and was buried 11 August 1596.
+After the birth of the twins, Shakespeare left few historical traces until
+he is mentioned as part of the London theatre scene in 1592. The exception 
+is the appearance of his name in the "complaints bill" of a law case before 
+the Queen's Bench court at Westminster dated Michaelmas Term 1588 and 9
+ October 1589.[32] Scholars refer to the years between 1585 and 1592 as
+ Shakespeare's "lost years".[33] Biographers attempting to account for this
+ period have reported many apocryphal stories. Nicholas Rowe, Shakespeare's 
+first biographer, recounted a Stratford legend that Shakespeare fled the town 
+for London to escape prosecution for deer poaching in the estate of local 
+squire Thomas Lucy. Shakespeare is also supposed to have taken his revenge 
+on Lucy by writing a scurrilous ballad about him.[34][35] Another 18th-century 
+story has Shakespeare starting his theatrical career minding the horses of
+theatre patrons in London.[36] John Aubrey reported that Shakespeare had been
+a country schoolmaster.[37] Some 20th-century scholars have suggested that 
+Shakespeare may have been employed as a schoolmaster by Alexander Hoghton of 
+Lancashire, a Catholic landowner who named a certain "William Shakeshafte" 
+in his will.[38][39] Little evidence substantiates such stories other than 
+hearsay collected after his death, and Shakeshafte was a common name in the 
+Lancashire area. It is not known definitively when Shakespeare began writing, 
+but contemporary allusions and records of performances show that several of
+his plays were on the London stage by 1592.[42] By then, he was sufficiently 
+known in London to be attacked in print by the playwright Robert Greene in 
+his Groats-Worth of Wit:there is an upstart Crow, beautified with our feathers,
+that with his  Tiger's heart wrapped in a Player's hide, supposes he is as 
+well able to bombast out a blank verse as the best of you: and being an absolute 
+Johannes factotum, is in his own conceit the only Shake-scene in a country.
+Scholars differ on the exact meaning of Greene's words,[43][44] but most
+agree that Greene was accusing Shakespeare of reaching above his rank in t
+rying to match such university-educated writers as Christopher Marlowe, 
+Thomas Nashe, and Greene himself (the so-called "University Wits").
+The italicised phrase parodying the line "Oh, tiger's heart wrapped in a
+woman's hide" from Shakespeare's Henry VI, Part 3, along with the pun 
+"Shake-scene", clearly identify Shakespeare as Greene's target. As used 
+here, Johannes Factotum ("Jack of all trades") refers to a second-rate 
+tinkerer with the work of others, rather than the more common "universal genius".
+Greene's attack is the earliest surviving mention of Shakespeare's work in 
+the theatre. Biographers suggest that his career may have begun any time 
+from the mid-1580s to just before Greene's remarks.[47][48][49] After 1594,
+Shakespeare's plays were performed only by the Lord Chamberlain's Men, a 
+company owned by a group of players, including Shakespeare, that soon 
+became the leading playing company in London.[50] After the death of
+Queen Elizabeth in 1603, the company was awarded a royal patent by the 
+new King James I, and changed its name to the King's Men.[
+In 1599, a partnership of members of the company built their own theatre 
+on the south bank of the River Thames, which they named the Globe. 
+In 1608, the partnership also took over the Blackfriars indoor theatre. 
+Extant records of Shakespeare's property purchases and investments indicate 
+that his association with the company made him a wealthy man, and in 
+1597, he bought the second-largest house in Stratford, New Place, and in 
+1605, invested in a share of the parish tithes in Stratford.
+Some of Shakespeare's plays were published in quarto editions, beginning in
+1594, and by 1598, his name had become a selling point and began to appear 
+on the title pages. Shakespeare continued to act in his own and other plays after his success as a playwright. The 1616 edition of Ben Jonson's Works names him on the cast lists for Every Man in His Humour (1598) and Sejanus His Fall (1603).[58] The absence of his name from the 1605 cast list for Jonson's Volpone is taken by some scholars as a sign that his acting career was nearing its end.[47] The First Folio of 1623, however, lists Shakespeare as one of "the Principal Actors in all these Plays", some of which were first staged after Volpone, although we cannot know for certain which roles he played.[59] In 1610, John Davies of Hereford wrote that "good Will" played "kingly" roles.[60] In 1709, Rowe passed down a tradition that Shakespeare played the ghost of Hamlet's father.[35] Later traditions maintain that he also played Adam in As You Like It, and the Chorus in Henry V,[61][62] though scholars doubt the sources of that information.[63]
+Throughout his career, Shakespeare divided his time between London and 
+Stratford. In 1596, the year before he bought New Place as his family home
+in Stratford, Shakespeare was living in the parish of St. Helen's, 
+Bishopsgate, north of the River Thames.[64][65] He moved across the river 
+to Southwark by 1599, the same year his company constructed the Globe 
+Theatre there.[64][66] By 1604, he had moved north of the river again, 
+to an area north of St Paul's Cathedral with many fine houses. There, 
+he rented rooms from a French Huguenot named Christopher Mountjoy, a 
+maker of ladies' wigs and other headgear.
+Rowe was the first biographer to record the tradition, repeated by Johnson,
+that Shakespeare retired to Stratford "some years before his death".
+He was still working as an actor in London in 1608; in an answer to the
+sharers' petition in 1635, Cuthbert Burbage stated that after purchasing 
+the lease of the Blackfriars Theatre in 1608 from Henry Evans, the King's
+Men "placed men players" there, "which were Heminges, Condell, Shakespeare, 
+etc.". However, it is perhaps relevant that the bubonic plague raged in 
+London throughout 1609.[72][73] The London public playhouses were repeatedly 
+closed during extended outbreaks of the plague (a total of over 60 months closure
+ between May 1603 and February 1610),[74] which meant there was often no acting
+ work. Retirement from all work was uncommon at that time.[75] Shakespeare 
+continued to visit London during the years 1611–1614.[69] In 1612, he was 
+called as a witness in Bellott v. Mountjoy, a court case concerning the marriage
+settlement of Mountjoy's daughter, Mary.[76][77] In March 1613, he bought a 
+gatehouse in the former Blackfriars priory;[78] and from November 1614, he
+ was in London for several weeks with his son-in-law, John Hall.[79] After
+Shakespeare wrote fewer plays, and none are attributed to him after 1613.
+His last three plays were collaborations, probably with John Fletcher,
+who succeeded him as the house playwright of the King's Men.
+Shakespeare died on 23 April 1616, at the age of 52.[f] He died within a 
+month of signing his will, a document which he begins by describing himself 
+as being in "perfect health". No extant contemporary source explains how or 
+why he died. Half a century later, John Ward, the vicar of Stratford, wrote
+in his notebook: "Shakespeare, Drayton, and Ben Jonson had a merry meeting 
+and, it seems, drank too hard, for Shakespeare died of a fever there 
+contracted",[83][84] not an impossible scenario since Shakespeare knew 
+Jonson and Drayton. Of the tributes from fellow authors, one refers to his 
+relatively sudden death: "We wondered, Shakespeare, that thou went'st so 
+soon  From the world's stage to the grave's tiring room.
+He was survived by his wife and two daughters. Susanna had married a 
+physician, John Hall, in 1607,[86] and Judith had married Thomas Quiney, a 
+vintner, two months before Shakespeare's death.[87] Shakespeare signed his 
+last will and testament on 25 March 1616; the following day, his new 
+son-in-law, Thomas Quiney was found guilty of fathering an illegitimate 
+son by Margaret Wheeler, who had died during childbirth. Thomas was ordered
+ by the church court to do public penance, which would have caused much 
+shame and embarrassment for the Shakespeare family.
+Shakespeare bequeathed the bulk of his large estate to his elder daughter
+Susanna[88] under stipulations that she pass it down intact to "the first 
+son of her body".The Quineys had three children, all of whom died 
+without marrying. The Halls had one child, Elizabeth, who married
+twice but died without children in 1670, ending Shakespeare's direct line.
+Shakespeare's will scarcely mentions his wife, Anne, who was probably 
+entitled to one-third of his estate automatically.[h] He did make a point,
+however, of leaving her "my second best bed", a bequest that has led to 
+much speculation. Some scholars see the bequest as an insult 
+to Anne, whereas others believe that the second-best bed would have been 
+the matrimonial bed and therefore rich in significance.
+Shakespeare was buried in the chancel of the Holy Trinity Church two days 
+after his death. The epitaph carved into the stone slab covering 
+his grave includes a curse against moving his bones, which was carefully 
+avoided during restoration of the church in 2008:
+Good frend for Iesvs sake forbeare,
+To digg the dvst encloased heare.
+Bleste be yͤ man yͭ spares thes stones,
+And cvrst be he yͭ moves my bones.
+(Modern spelling: Good friend, for Jesus' 
+sake forbear, / To dig the dust enclosed 
+here. / Blessed be the man that spares these stones, / And cursed be he that moves my bones.)
+Some time before 1623, a funerary monument was erected in his memory on 
+the north wall, with a half-effigy of him in the act of writing. Its plaque 
+compares him to Nestor, Socrates, and Virgil.[103] In 1623, in conjunction
+with the publication of the First Folio, the Droeshout engraving was 
+published. Shakespeare has been commemorated in many statues and memorials 
+around the world, including funeral monuments in Southwark Cathedral and 
+Poets' Corner in Westminster Abbey
+Most playwrights of the period typically collaborated with others at some 
+point, and critics agree that Shakespeare did the same, mostly early 
+and late in his career.
+The first recorded works of Shakespeare are Richard III and the three parts
+of Henry VI, written in the early 1590s during a vogue for historical drama.
+Shakespeare's plays are difficult to date precisely, however,[108][109] and 
+studies of the texts suggest that Titus Andronicus, The Comedy of Errors, 
+The Taming of the Shrew, and The Two Gentlemen of Verona may also belong to 
+Shakespeare's earliest period.[110][108] His first histories, which draw 
+heavily on the 1587 edition of Raphael Holinshed's Chronicles of England, 
+Scotland, and Ireland,[111] dramatise the destructive results of weak or 
+corrupt rule and have been interpreted as a justification for the origins of 
+the Tudor dynasty.[112] The early plays were influenced by the works of other 
+Elizabethan dramatists, especially Thomas Kyd and Christopher Marlowe, by the 
+traditions of medieval drama, and by the plays of Seneca.The Comedy of Errors was also based 
+on classical models, but no source for The Taming of the Shrew has been
+found, though it is related to a separate play of the same name and may
+have derived from a folk story.[116][117] Like The Two Gentlemen of 
+Verona, in which two friends appear to approve of rape,the Shrew's story
+of the taming of a woman's independent spirit by a man sometimes troubles 
+modern critics, directors, and audiences.
+Shakespeare's early classical and Italianate comedies, containing tight 
+double plots and precise comic sequences, give way in the mid-1590s to the 
+romantic atmosphere of his most acclaimed comedies. A Midsummer 
+Night's Dream is a witty mixture of romance, fairy magic, and comic 
+lowlife scenes. Shakespeare's next comedy, the equally romantic 
+Merchant of Venice, contains a portrayal of the vengeful Jewish moneylender 
+Shylock, which reflects Elizabethan views but may appear derogatory to 
+modern audiences. The wit and wordplay of Much Ado About Nothing,
+the charming rural setting of As You Like It, and the lively merrymaking of 
+Twelfth Night complete Shakespeare's sequence of great comedies.[127] After 
+the lyrical Richard II, written almost entirely in verse, Shakespeare introduced prose comedy into the histories of the late 1590s, Henry IV, parts 1 and 2, and Henry V. His characters become more complex and tender as he switches deftly between comic and serious scenes, prose and poetry, and achieves the narrative variety of his mature work.[128][129][130] This period begins and ends with two tragedies: Romeo and Juliet, the famous romantic tragedy of sexually charged adolescence, love, and death;[131][132] and Julius Caesar—based on Sir Thomas North's 1579 translation of Plutarch's Parallel Lives—which introduced a new kind of drama.[133][134] According to Shakespearean scholar James Shapiro, in Julius Caesar, "the various strands of politics, character, inwardness, contemporary events, even Shakespeare's own reflections on the act of writing, began to infuse each other.
+In the early 17th century, Shakespeare wrote the so-called "problem plays"
+Measure for Measure, Troilus and Cressida, and All's Well That Ends Well 
+and a number of his best known tragedies. Many critics believe that 
+Shakespeare's greatest tragedies represent the peak of his art. 
+The titular hero of one of Shakespeare's greatest tragedies, Hamlet, 
+has probably been discussed more than any other Shakespearean character, 
+especially for his famous soliloquy which begins "To be or not to be; 
+that is the question". Unlike the introverted Hamlet, whose fatal 
+flaw is hesitation, the heroes of the tragedies that followed, Othello 
+and King Lear, are undone by hasty errors of judgement.[139] The plots 
+of Shakespeare's tragedies often hinge on such fatal errors or flaws, 
+which overturn order and destroy the hero and those he loves.[140] In 
+Othello, the villain Iago stokes Othello's sexual jealousy to the point 
+where he murders the innocent wife who loves him. In King Lear,
+the old king commits the tragic error of giving up his powers, initiating
+the events which lead to the torture and blinding of the Earl of 
+Gloucester and the murder of Lear's youngest daughter Cordelia. 
+According to the critic Frank Kermode, "the play-offers neither its
+good characters nor its audience any relief from its cruelty". In Macbeth,
+the shortest and most compressed of Shakespeare's tragedies, uncontrollable
+ambition incites Macbeth and his wife, Lady Macbeth, to murder the rightful 
+king and usurp the throne until their own guilt destroys them in turn.
+In this play, Shakespeare adds a supernatural element to the tragic 
+structure. His last major tragedies, Antony and Cleopatra and Coriolanus,
+contain some of Shakespeare's finest poetry and were considered his 
+most successful tragedies by the poet and critic T.S. Eliot.
+In his final period, Shakespeare turned to romance or tragicomedy and 
+completed three more major plays: Cymbeline, The Winter's Tale, and The 
+Tempest, as well as the collaboration, Pericles, Prince of Tyre. Less bleak 
+than the tragedies, these four plays are graver in tone than the comedies 
+of the 1590s, but they end with reconciliation and the forgiveness of 
+potentially tragic errors.[151] Some commentators have seen this change 
+in mood as evidence of a more serene view of life on Shakespeare's part, 
+but it may merely reflect the theatrical fashion of the day.
+Shakespeare collaborated on two further surviving plays, Henry VIII and 
+The Two Noble Kinsmen, probably with John Fletcher
+It is not clear for which companies Shakespeare wrote his early plays. 
+The title page of the 1594 edition of Titus Andronicus reveals that 
+the play had been acted by three different troupes.[156] After the 
+plagues of 1592–93, Shakespeare's plays were performed by his own 
+company at The Theatre and the Curtain in Shoreditch, north of the 
+Thames.[157] Londoners flocked there to see the first part of Henry IV,
+Leonard Digges recording, "Let but Falstaff come, Hal, Poins, the rest 
+and you scarce shall have a room".[158] When the company found themselves
+in dispute with their landlord, they pulled The Theatre down and used 
+the timbers to construct the Globe Theatre, the first playhouse built 
+by actors for actors, on the south bank of the Thames at Southwark.[
+The Globe opened in autumn 1599, with Julius Caesar one of the first 
+plays staged. Most of Shakespeare's greatest post-1599 
+plays were written for the Globe, including Hamlet, Othello, and King Lear
+After the Lord Chamberlain's Men were renamed the King's Men in 1603, 
+they entered a special relationship with the new King James. Although 
+the performance records are patchy, the King's Men performed seven of 
+Shakespeare's plays at court between 1 November 1604, and 31 October 1605, 
+including two performances of The Merchant of Venice.[62] After 1608, they 
+performed at the indoor Blackfriars Theatre during the winter and the Globe
+during the summer.[163] The indoor setting, combined with the Jacobean 
+fashion for lavishly staged masques, allowed Shakespeare to introduce more 
+elaborate stage devices. In Cymbeline, for example, Jupiter descends "in 
+thunder and lightning, sitting upon an eagle: he throws a thunderbolt. The 
+ghosts fall on their knees.
+The actors in Shakespeare's company included the famous Richard Burbage,
+William Kempe, Henry Condell and John Heminges. Burbage played the leading
+role in the first performances of many of Shakespeare's plays, including 
+Richard III, Hamlet, Othello, and King Lear.[166] The popular comic actor
+Will Kempe played the servant Peter in Romeo and Juliet and Dogberry in 
+Much Ado About Nothing, among other characters.[167][168] He was replaced 
+around 1600 by Robert Armin, who played roles such as Touchstone in As You
+Like It and the fool in King Lear.[169] In 1613, Sir Henry Wotton recorded 
+that Henry VIII "was set forth with many extraordinary circumstances of
+pomp and ceremony".[170] On 29 June, however, a cannon set fire to the 
+thatch of the Globe and burned the theatre to the ground, an event which 
+pinpoints the date of a Shakespeare play with rare precision.
+In 1623, John Heminges and Henry Condell, two of Shakespeare's friends from the King's Men, published the First Folio, a collected edition of Shakespeare's plays. It contained 36 texts, including 18 printed for the first time.[171] Many of the plays had already appeared in quarto versions—flimsy books made from sheets of paper folded twice to make four leaves.[172] No evidence suggests that Shakespeare approved these editions, which the First Folio describes as "stol'n and surreptitious copies".[173] Nor did Shakespeare plan or expect his works to survive in any form at all; those works likely would have faded into oblivion but for his friends' spontaneous idea, after his death, to create and publish the First Folio.[174]
+
+Alfred Pollard termed some of the pre-1623 versions as "bad quartos" because of their adapted, paraphrased or garbled texts, which may in places have been reconstructed from memory.[172][173][175] Where several versions of a play survive, each differs from the other. The differences may stem from copying or printing errors, from notes by actors or audience members, or from Shakespeare's own papers.[176][177] In some cases, for example, Hamlet, Troilus and Cressida, and Othello, Shakespeare could have revised the texts between the quarto and folio editions. In the case of King Lear, however, while most modern editions do conflate them, the 1623 folio version is so different from the 1608 quarto that the Oxford Shakespeare prints them both, arguing that they cannot be conflated without confusion
+Published in 1609, the Sonnets were the last of Shakespeare's non-dramatic works to be printed. Scholars are not certain when each of the 154 sonnets was composed, but evidence suggests that Shakespeare wrote sonnets throughout his career for a private readership.[186][187] Even before the two unauthorised sonnets appeared in The Passionate Pilgrim in 1599, Francis Meres had referred in 1598 to Shakespeare's "sugred Sonnets among his private friends".[188] Few analysts believe that the published collection follows Shakespeare's intended sequence.[189] He seems to have planned two contrasting series: one about uncontrollable lust for a married woman of dark complexion (the "dark lady"), and one about conflicted love for a fair young man (the "fair youth"). It remains unclear if these figures represent real individuals, or if the authorial "I" who addresses them represents Shakespeare himself, though Wordsworth believed that with the sonnets "Shakespeare unlocked his heart
+The 1609 edition was dedicated to a "Mr. W.H.", credited as "the only begetter" of the poems. It is not known whether this was written by Shakespeare himself or by the publisher, Thomas Thorpe, whose initials appear at the foot of the dedication page; nor is it known who Mr. W.H. was, despite numerous theories, or whether Shakespeare even authorised the publication.[191] Critics praise the Sonnets as a profound meditation on the nature of love, sexual passion, procreation, death, and time.
+Shakespeare's first plays were written in the conventional style of the day. He wrote them in a stylised language that does not always spring naturally from the needs of the characters or the drama.[193] The poetry depends on extended, sometimes elaborate metaphors and conceits, and the language is often rhetorical—written for actors to declaim rather than speak. The grand speeches in Titus Andronicus, in the view of some critics, often hold up the action, for example; and the verse in The Two Gentlemen of Verona has been described as stilted.
+However, Shakespeare soon began to adapt the traditional styles to his own purposes. The opening soliloquy of Richard III has its roots in the self-declaration of Vice in medieval drama. At the same time, Richard's vivid self-awareness looks forward to the soliloquies of Shakespeare's mature plays.[197][198] No single play marks a change from the traditional to the freer style. Shakespeare combined the two throughout his career, with Romeo and Juliet perhaps the best example of the mixing of the styles.[199] By the time of Romeo and Juliet, Richard II, and A Midsummer Night's Dream in the mid-1590s, Shakespeare had begun to write a more natural poetry. He increasingly tuned his metaphors and images to the needs of the drama itself.
+Shakespeare's standard poetic form was blank verse, composed in iambic pentameter. In practice, this meant that his verse was usually unrhymed and consisted of ten syllables to a line, spoken with a stress on every second syllable. The blank verse of his early plays is quite different from that of his later ones. It is often beautiful, but its sentences tend to start, pause, and finish at the end of lines, with the risk of monotony.[200] Once Shakespeare mastered traditional blank verse, he began to interrupt and vary its flow. This technique releases the new power and flexibility of the poetry in plays such as Julius Caesar and Hamlet. Shakespeare uses it, for example, to convey the turmoil in Hamlet's mind:
+After Hamlet, Shakespeare varied his poetic style further, particularly in the more emotional passages of the late tragedies. The literary critic A. C. Bradley described this style as "more concentrated, rapid, varied, and, in construction, less regular, not seldom twisted or elliptical".[202] In the last phase of his career, Shakespeare adopted many techniques to achieve these effects. These included run-on lines, irregular pauses and stops, and extreme variations in sentence structure and length.[203] In Macbeth, for example, the language darts from one unrelated metaphor or simile to another: "was the hope drunk/ Wherein you dressed yourself?" (1.7.35–38); "... pity, like a naked new-born babe/ Striding the blast, or heaven's cherubim, hors'd/ Upon the sightless couriers of the air ..." (1.7.21–25). The listener is challenged to complete the sense.[203] The late romances, with their shifts in time and surprising turns of plot, inspired a last poetic style in which long and short sentences are set against one another, clauses are piled up, subject and object are reversed, and words are omitted, creating an effect of spontaneity.[204]
+
+Shakespeare combined poetic genius with a practical sense of the theatre.[205] Like all playwrights of the time, he dramatised stories from sources such as Plutarch and Holinshed.[206] He reshaped each plot to create several centres of interest and to show as many sides of a narrative to the audience as possible. This strength of design ensures that a Shakespeare play can survive translation, cutting and wide interpretation without loss to its core drama.[207] As Shakespeare's mastery grew, he gave his characters clearer and more varied motivations and distinctive patterns of speech. He preserved aspects of his earlier style in the later plays, however. In Shakespeare's late romances, he deliberately returned to a more artificial style, which emphasised the illusion of theatre
+Shakespeare's work has made a lasting impression on later theatre and literature. In particular, he expanded the dramatic potential of characterisation, plot, language, and genre.[210] Until Romeo and Juliet, for example, romance had not been viewed as a worthy topic for tragedy.[211] Soliloquies had been used mainly to convey information about characters or events, but Shakespeare used them to explore characters' minds.[212] His work heavily influenced later poetry. The Romantic poets attempted to revive Shakespearean verse drama, though with little success. Critic George Steiner described all English verse dramas from Coleridge to Tennyson as "feeble variations on Shakespearean themes."[213]
+
+Shakespeare influenced novelists such as Thomas Hardy, William Faulkner, and Charles Dickens. The American novelist Herman Melville's soliloquies owe much to Shakespeare; his Captain Ahab in Moby-Dick is a classic tragic hero, inspired by King Lear.[214] Scholars have identified 20,000 pieces of music linked to Shakespeare's works. These include three operas by Giuseppe Verdi, Macbeth, Otello and Falstaff, whose critical standing compares with that of the source plays.[215] Shakespeare has also inspired many painters, including the Romantics and the Pre-Raphaelites. The Swiss Romantic artist Henry Fuseli, a friend of William Blake, even translated Macbeth into German.[216] The psychoanalyst Sigmund Freud drew on Shakespearean psychology, in particular, that of Hamlet, for his theories of human nature.[217]
+
+In Shakespeare's day, English grammar, spelling, and pronunciation were less standardised than they are now,[218] and his use of language helped shape modern English.[219] Samuel Johnson quoted him more often than any other author in his A Dictionary of the English Language, the first serious work of its type.[220] Expressions such as "with bated breath" (Merchant of Venice) and "a foregone conclusion" (Othello) have found their way into everyday English speech.[221][222]
+
+Shakespeare's influence extends far beyond his native England and the English language. His reception in Germany was particularly significant; as early as the 18th century Shakespeare was widely translated and popularised in Germany, and gradually became a "classic of the German Weimar era;" Christoph Martin Wieland was the first to produce complete translations of Shakespeare's plays in any language.
+Shakespeare was not revered in his lifetime, but he received a large amount of praise.[226][227] In 1598, the cleric and author Francis Meres singled him out from a group of English writers as "the most excellent" in both comedy and tragedy.[228][229] The authors of the Parnassus plays at St John's College, Cambridge, numbered him with Chaucer, Gower, and Spenser.[230] In the First Folio, Ben Jonson called Shakespeare the "Soul of the age, the applause, delight, the wonder of our stage", although he had remarked elsewhere that "Shakespeare wanted art".[225]
+
+Between the Restoration of the monarchy in 1660 and the end of the 17th century, classical ideas were in vogue. As a result, critics of the time mostly rated Shakespeare below John Fletcher and Ben Jonson.[231] Thomas Rymer, for example, condemned Shakespeare for mixing the comic with the tragic. Nevertheless, poet and critic John Dryden rated Shakespeare highly, saying of Jonson, "I admire him, but I love Shakespeare".[232] For several decades, Rymer's view held sway; but during the 18th century, critics began to respond to Shakespeare on his own terms and acclaim what they termed his natural genius. A series of scholarly editions of his work, notably those of Samuel Johnson in 1765 and Edmond Malone in 1790, added to his growing reputation.[233][234] By 1800, he was firmly enshrined as the national poet.[235] In the 18th and 19th centuries, his reputation also spread abroad. Among those who championed him were the writers Voltaire, Goethe, Stendhal, and Victor Hugo.
+During the Romantic era, Shakespeare was praised by the poet and literary philosopher Samuel Taylor Coleridge, and the critic August Wilhelm Schlegel translated his plays in the spirit of German Romanticism.[238] In the 19th century, critical admiration for Shakespeare's genius often bordered on adulation.[239] "This King Shakespeare," the essayist Thomas Carlyle wrote in 1840, "does not he shine, in crowned sovereignty, over us all, as the noblest, gentlest, yet strongest of rallying signs; indestructible".[240] The Victorians produced his plays as lavish spectacles on a grand scale.[241] The playwright and critic George Bernard Shaw mocked the cult of Shakespeare worship as "bardolatry", claiming that the new naturalism of Ibsen's plays had made Shakespeare obsolete.[242]
+
+The modernist revolution in the arts during the early 20th century, far from discarding Shakespeare, eagerly enlisted his work in the service of the avant-garde. The Expressionists in Germany and the Futurists in Moscow mounted productions of his plays. Marxist playwright and director Bertolt Brecht devised an epic theatre under the influence of Shakespeare. The poet and critic T.S. Eliot argued against Shaw that Shakespeare's "primitiveness" in fact made him truly modern.[243] Eliot, along with G. Wilson Knight and the school of New Criticism, led a movement towards a closer reading of Shakespeare's imagery. In the 1950s, a wave of new critical approaches replaced modernism and paved the way for "post-modern" studies of Shakespeare.[244] By the 1980s, Shakespeare studies were open to movements such as structuralism, feminism, New Historicism, African-American studies, and queer studies.[245][246] Comparing Shakespeare's accomplishments to those of leading figures in philosophy and theology, Harold Bloom wrote: "Shakespeare was larger than Plato and than St. Augustine. He encloses us because we see with his fundamental perceptions
+Shakespeare's works include the 36 plays printed in the First Folio of 1623, listed according to their folio classification as comedies, histories, and tragedies.[248] Two plays not included in the First Folio, The Two Noble Kinsmen and Pericles, Prince of Tyre, are now accepted as part of the canon, with today's scholars agreeing that Shakespeare made major contributions to the writing of both.[249][250] No Shakespearean poems were included in the First Folio.
+
+In the late 19th century, Edward Dowden classified four of the late comedies as romances, and though many scholars prefer to call them tragicomedies, Dowden's term is often used.[251][252] In 1896, Frederick S. Boas coined the term "problem plays" to describe four plays: All's Well That Ends Well, Measure for Measure, Troilus and Cressida, and Hamlet
+Dramas as singular in theme and temper cannot be strictly called comedies or tragedies", he wrote. "We may, therefore, borrow a convenient phrase from the theatre of today and class them together as Shakespeare's problem plays."[254] The term, much debated and sometimes applied to other plays, remains in use, though Hamlet is definitively classed as a tragedy.
+Around 230 years after Shakespeare's death, doubts began to be expressed about the authorship of the works attributed to him.[258] Proposed alternative candidates include Francis Bacon, Christopher Marlowe, and Edward de Vere, 17th Earl of Oxford.[259] Several "group theories" have also been proposed.[260] Only a small minority of academics believe there is reason to question the traditional attribution,[261] but interest in the subject, particularly the Oxfordian theory of Shakespeare authorship, continues into the 21st century
+Shakespeare conformed to the official state religion,[k] but his private views on religion have been the subject of debate. Shakespeare's will uses a Protestant formula, and he was a confirmed member of the Church of England, where he was married, his children were baptised, and where he is buried. Some scholars claim that members of Shakespeare's family were Catholics, at a time when practising Catholicism in England was against the law.[266] Shakespeare's mother, Mary Arden, certainly came from a pious Catholic family. The strongest evidence might be a Catholic statement of faith signed by his father, John Shakespeare, found in 1757 in the rafters of his former house in Henley Street. However, the document is now lost and scholars differ as to its authenticity.[267][268] In 1591, the authorities reported that John Shakespeare had missed church "for fear of process for debt", a common Catholic excuse.[269][270][271] In 1606, the name of William's daughter Susanna appears on a list of those who failed to attend Easter communion in Stratford.[269][270][271] Other authors argue that there is a lack of evidence about Shakespeare's religious beliefs. Scholars find evidence both for and against Shakespeare's Catholicism, Protestantism, or lack of belief in his plays, but the truth may be impossible to prove
+Few details of Shakespeare's sexuality are known. At 18, he married 26-year-old Anne Hathaway, who was pregnant. Susanna, the first of their three children, was born six months later on 26 May 1583. Over the centuries, some readers have posited that Shakespeare's sonnets are autobiographical,[274] and point to them as evidence of his love for a young man. Others read the same passages as the expression of intense friendship rather than romantic love.[275][276][277] The 26 so-called "Dark Lady" sonnets, addressed to a married woman, are taken as evidence of heterosexual liaisons.
+No written contemporary description of Shakespeare's physical appearance survives, and no evidence suggests that he ever commissioned a portrait, so the Droeshout engraving, which Ben Jonson approved of as a good likeness,[279] and his Stratford monument provide perhaps the best evidence of his appearance. From the 18th century, the desire for authentic Shakespeare portraits fuelled claims that various surviving pictures depicted Shakespeare. That demand also led to the production of several fake portraits, as well as misattributions, repaintings, and relabelling of portraits of other people.[
+    The spelling of William Shakespeare's name has varied over time. It was not consistently spelled any single way during his lifetime, in manuscript or in printed form. After his death the name was spelled variously by editors of his work, and the spelling was not fixed until well into the 20th century.
+
+The standard spelling of the surname as "Shakespeare" was the most common published form in Shakespeare's lifetime, but it was not one used in his own handwritten signatures. It was, however, the spelling used as a printed signature to the dedications of the first editions of his poems Venus and Adonis in 1593 and The Rape of Lucrece in 1594. It is also the spelling used in the First Folio, the definitive collection of his plays published in 1623, after his death.
+
+The spelling of the name was later modernised, "Shakespear" gaining popular usage in the 18th century, which was largely replaced by "Shakspeare" from the late 18th through the early 19th century. In the Romantic and Victorian eras the spelling "Shakspere", as used in the poet's own signature, became more widely adopted in the belief that this was the most authentic version. From the mid-19th to the early 20th century, a wide variety of spellings were used for various reasons; although, following the publication of the Cambridge and Globe editions of Shakespeare in the 1860s, "Shakespeare" began to gain ascendancy. It later became a habit of writers who believed that someone else wrote the plays to use different spellings when they were referring to the "real" playwright and to the man from Stratford upon Avon. With rare exceptions, the spelling is now standardised in English-speaking countries as "Shakespeare". 
+There are six surviving signatures written by Shakespeare himself. These are all attached to legal documents. The six signatures appear on four documents:
+
+    a deposition in the Bellott v. Mountjoy case, dated 11 May 1612
+    the purchase of a house in Blackfriars, London, dated 10 March 1613
+    the mortgage of the same house, dated 11 March 1613
+    his Last Will & Testament, which contains three signatures, one on each page, dated 25 March 1616
+
+The signatures appear as follows:
+
+    Willm Shakp
+    William Shaksper
+    Wm Shakspe
+    William Shakspere
+    Willm Shakspere
+    By me William Shakspeare
+
+Most of these are abbreviated versions of the name, using breviographic conventions of the time. This was common practice. For example Edmund Spenser sometimes wrote his name out in full (spelling his first name Edmund or Edmond), but often used the abbreviated forms "Ed: spser" or "Edm: spser".[1]
+
+The three signatures on the will were first reproduced by the 18th-century scholar George Steevens, in the form of facsimile engravings. The two relating to the house sale were identified in 1768, and the document itself was acquired by Edmond Malone. Photographs of these five signatures were published by Sidney Lee.[2] The final signature was discovered by 1909 by Charles William Wallace.[3] There is also a signature on the fly-leaf of a copy of John Florio's translation of the works of Montaigne, which reads "Willm. Shakspere". This is no longer considered genuine, but was accepted by some scholars until the late 20th century.[4] Another possibly authentic signature appears on a copy of William Lambarde's Archaionomia (1568). Though smudged, the spelling appears to be "Shakspere"
+The writer David Kathman has tabulated the variations in the spelling of Shakespeare's name as reproduced in Samuel Schoenbaum's William Shakespeare: A Documentary Life. He states that of "non-literary references" in Shakespeare's lifetime (1564–1616) the spelling "Shakespeare" appears 71 times, while "Shakespere" appears second with 27 usages. These are followed by "Shakespear" (16); "Shakspeare" (13); "Shackspeare" (12) and "Shakspere" (8). There are also many other variations that appear in small numbers or as one-offs.[6]
+
+R.C. Churchill notes that such variations were far from unusual:
+
+    The name of Sir Walter Raleigh was written by his contemporaries either Raleigh, Raliegh, Ralegh, Raghley, Rawley, Rawly, Rawlie, Rawleigh, Raulighe, Raughlie, or Rayly. The name of Thomas Dekker was written either Dekker, Decker, Deckar, Deckers, Dicker, Dickers, Dyckers, or (interestingly enough) Dickens.[7]
+
+Kathman notes that the spelling is typically more uniform in printed versions than in manuscript versions, and that there is a greater variety of spelling in provincial documents than in metropolitan ones.
+Fifty-eight quarto (or Q) editions of Shakespeare's plays and five editions of poetry were published before the First Folio. On 20 of the plays, the author is not credited. On 15 title pages, his name is hyphenated, "Shake‑speare", 13 of these spellings being on the title pages of just three plays, Richard II (Q2 1598, Q3 1598, Q4 1608, and Q5 1615), Richard III (Q2 1598, Q3 1602, Q4 1605, Q5 1612, and Q6 1622), and Henry IV, Part 1 (Q2 1599, Q3 1604, Q4 1608, and Q5 1613).[8] A hyphen is also present in the first quarto of Hamlet (1602) and the second of King Lear (1619). The name printed at the end of the poem The Phoenix and the Turtle, which was published in a collection of verse in 1601, is hyphenated, as is the name on the title page and the poem A Lover's Complaint of Shake-speares Sonnets (1609). It is used in the cast list of Ben Jonson's Sejanus His Fall, and in six literary allusions published between 1594 and 1623.[9]
+
+The un-hyphenated spelling "Shakespeare" (or Shakeſpeare, with a long s) appears on 22 of the 58 quartos.[6] It is spelled this way in the first quartos of The Merchant of Venice (1600), A Midsummer Night's Dream (1600), Much Ado About Nothing (1600), The Merry Wives of Windsor (1602), Pericles, Prince of Tyre (1609), Troilus and Cressida (1609), Othello (1622). The second, or "good", quarto of Hamlet (1604) also uses this spelling. It is also spelled this way on the misattributed quarto of Sir John Oldcastle (1600; 1619) and on the verse collection The Passionate Pilgrim (1599).[9]
+
+Rarer spellings are "Shak‑speare" on the first quarto of King Lear (1608), and "Shakeſpere", in the first quarto of Love's Labour's Lost (1598). On the misattributed quarto A Yorkshire Tragedy (1608) his name is spelled "Shakſpeare", a spelling that also appears on the quarto of The Two Noble Kinsmen (1634), which was published after the First Folio.[9]
+
+James S. Shapiro argues that Shakespeare's name caused difficulties for typesetters, and that is one reason why the form with the "e" in the centre is most commonly used, and why it is sometimes hyphenated.[10] Kathman argues that any name that could be divided into two clear parts was liable to be hyphenated, especially if the parts could be interpreted as distinct words.
+Later editions of Shakespeare's works adopted differing spellings, in accordance with fashions of modernised spelling of the day, or, later, of attempts to adopt what was believed to be the most historically accurate version of the name. When he was referred to in foreign languages, he acquired even more variant spellings. 18th-century French critics were known to use "Shakpear, Shakespehar, Shakespeart, or Shakees Pear."
+A shift from "Shakespeare" to the modernised spelling "Shakespear" occurs in the second printing of the Third Folio, published in 1664 by Philip Chetwinde. This retained the original title page, but included a section with additional plays.[11] The title page of this new add-on adopted the new spelling.[12] It was also adopted by other authors of the Restoration Era. John Downes and Nahum Tate both use the spelling.[13]
+
+This was followed by 18th-century writers. Shakespeare's first biographer, Nicholas Rowe, also spelled the name "Shakespear", in his book Some Account of the Life &c. of Mr. William Shakespear (1709) and in his new edition of the works. This spelling was followed by Alexander Pope in his edition of the Works of Shakespear (1725) and George Sewell (The Works of Mr. William Shakespear).[14] The spelling with an "e" at the end persisted, however. Pope's rival Lewis Theobald retained it in his edition, Shakespeare Restored (1726), which pointedly rejected attempts to modernise and sanitise the original works.
+The "Shakespear" spelling continued to be used by scholars throughout the 18th century, including William Warburton. However, many, like Theobald, preferred the First Folio spelling, most notably Samuel Johnson.[14] "Shakespear" was less widely used into the 19th and 20th centuries, increasingly by advocates of rational spelling. William Hazlitt used it in his book Characters of Shakespear's Plays. George Bernard Shaw, a strong advocate of spelling reform, insisted on the use of this spelling in all his publications
+Archival material relating to Shakespeare was first identified by 18th-century scholars, most notably Edmond Malone, who recorded variations in the spelling of the name. Malone declared a preference for the spelling "Shakspeare", using it in his major publications including his 1790 sixteen-volume edition of the complete works of the playwright. George Steevens also used this spelling. Steevens and Malone had both examined Shakespeare's will, and were convinced that the final signature was spelled this way, which also conformed to the spelling used on Shakespeare's tomb. However, Malone admitted that the signature was difficult to read and that the others were clearly spelled without the final "a".[12] This spelling continued to be popular throughout the later Georgian period. Indeed "virtually every edition" of the playwright's work in the early 19th century before 1840 used this spelling. Even German scholars such as Friedrich Schlegel and Ludwig Tieck adopted it.[12]
+
+The antiquarian Joseph Hunter was the first to publish all known variations of the spelling of the name, which he did in 1845 in his book Illustrations of the Life, Studies, and Writings of Shakespeare. He gives an account of what was known at the time of the history of the name of Shakespeare, and lists all its variant forms, including the most idiosyncratic instances such as "Shagsper" and "Saxpere". He linked this to a history of the Shakespeare family and its descendants, though he was not able to add much to the material already identified by Edmond Malone.[16] Hunter noted that "there has been endless variety in the form in which this name has been written." He criticised Malone and Steevens, writing that "in an evil hour they agreed, for no apparent reason, to abolish the e in the first syllable."[17] Hunter argued that there were probably two pronunciations of the name, a Warwickshire version and a London version, so that "the poet himself might be called by his honest neighbours at Stratford and Shottery, Mr. Shaxper, while his friends in London honoured him, as we know historically they did, with the more stately name of Shakespeare." Kathman argues that while it is possible that different pronunciations existed, there is no good reason to think so on the basis of spelling variations.[6] 
+According to Hunter it was in 1785 that the antiquarian John Pinkerton first revived the spelling "Shakspere" in the belief that this was the correct form as "traced by the poet's own hand" in his signatures.[17] Pinkerton did so in Letters on Literature, published under the pen-name Robert Heron.[18] However, a later scholar identified a reference in The Gentleman's Magazine in 1784 to the deplorable "new fashion of writing Shakespeare's name SHAKSPERE", which suggests that the trend had been emerging since Steevens published facsimiles of the signatures in 1778.[12] Nevertheless, Pinkerton gave it wide circulation. The "Shakspere" spelling was quickly adopted by a number of writers and in 1788 was given official status by the London publisher Bell in its editions of the plays.[12] Samuel Taylor Coleridge, who published a large quantity of influential literature on the playwright, used both this and the "Shakspeare" spelling. His major works were published after his death with the new spelling.[19] The spelling continued to be preferred by many writers during the Victorian era, including the Pre-Raphaelite Brotherhood in The Germ.[20]
+
+The matter was widely debated. The Gentleman's Magazine became the forum for discussion of the topic. There was a heated debate in 1787, followed by another in 1840 when the spelling was promoted in a book by Frederic Madden, who insisted that new manuscript evidence proved that the poet always wrote his name "Shakspere". Isaac D'Israeli wrote a strongly worded letter condemning this spelling as a "barbaric curt shock". There followed a lengthy correspondence, mainly between John Bruce, who insisted on "Shakspere" because "a man's own mode of spelling his own name ought to be followed" and John William Burgon, who argued that "names are to be spelt as they are spelt in the printed books of the majority of well-educated persons", insisting that this rule authorised the spelling "Shakspeare". Various other contributors added to the debate.[21] A number of other articles covered the spelling dispute in the 19th century, in which the "Shakspere" spelling generally was promoted on the grounds that it was the poet's own. Albert Richard Smith in the satirical magazine The Month claimed that the controversy was finally "set to rest" by the discovery of a manuscript which proved that the spelling changed with the weather, "When the sun shone he made his 'A's, / When wet he took his 'E's."[22] In 1879 The New York Times published an article on the dispute, reporting on a pamphlet by James Halliwell-Phillipps attacking the "Shakspere" trend.[23]
+
+Many of the most important Victorian Shakespeare publishers and scholars used this spelling, including Charles Knight, whose The Pictorial Edition of the Works of Shakspere was very popular, and Edward Dowden, in Shakspere: a critical study of his mind and art. In Britain the New Shakspere Society was founded in 1873 by Frederick James Furnivall and, in America, the Shakspere Society of Philadelphia adopted the spelling. The former folded in 1894, but the latter still exists under its original name.[23][24] The spelling was still common in the early to mid 20th century, for example in Brander Matthews', Shakspere as a Playwright (1913),[25] Alwin Thaler's Shakspere to Sheridan (1922),[26] and T.W. Baldwin's Shakspere's five-act structure (1947).[27] 
+
+The spelling "Shakespeare" was vigorously defended by Isaac D'Israeli in his original letter to the Gentleman's Magazine. Joseph Hunter also expressly stated it to be the most appropriate spelling. D'Israeli argued that the printed spellings of the poems would have been chosen by the author. He also insisted that the spelling represents the proper pronunciation, evidenced by puns on the words "shake" and "spear" in Shakespeare's contemporaries. Hunter also argued that the spelling should follow established pronunciation and pointed to the poems, stating that "we possess printed evidence tolerably uniform from the person himself" supporting "Shakespeare".[17]
+
+Although Dowden, the most influential voice in Shakespearean criticism in the last quarter of the 19th century,[28] used the spelling "Shakspere", between 1863 and 1866 the nine-volume The Works of William Shakespeare, edited by William George Clark, John Glover, and William Aldis Wright, all Fellows of Trinity College at the University of Cambridge, had been published by the university. This edition (soon generally known as "The Cambridge Shakespeare") spelled the name "Shakespeare". A related edition, including Shakespeare's text from the Cambridge Shakespeare but without the scholarly apparatus, was issued in 1864 as "The Globe Edition". This became so popular that it remained in print and established itself as a standard text for almost a century.[29] With the ubiquity and authority of the Cambridge and Globe editions, backed by the impeccable academic credentials of the Cambridge editors, the spelling of the name as "Shakespeare" soon dominated in publications of works by and about Shakespeare. Although this form had been used occasionally in earlier publications, and other spellings continued to appear, from that point "Shakespeare" gained the dominance which it retains to this day
+When the advocates of the Shakespeare authorship question began to claim that someone other than Shakespeare of Stratford wrote the plays, they drew on the fact that variant spellings existed to distinguish between the supposed pseudonym used by the hidden author and the name of the man born in Stratford, who is claimed to have acted as a "front man".[7][31]
+
+The use of different spellings was sometimes simply a convenience, to clarify which "Shakespeare" was being discussed. In other cases it was linked to an argument about the meaning supposed to be attached to "Shakespeare" as a pseudonym. In some instances it arose from a belief that different spelling literally implied, as R.C. Churchill puts it, "that there must have been two men: one, the actor, whom they mostly call 'Shaksper' or 'Shakspere', the other the real author (Bacon, Derby, Rutland, etc.) whom they call 'Shakespeare' or 'Shake-speare' (with the hyphen)." In some cases there were even imagined to be three Shakespeares: the author, the actor and the Stratford man.[7][32]
+
+The choice of spelling for the Stratford man varied. Because he is known to have signed his name "Shakspere" when writing it out in full, this is the spelling sometimes adopted. However, H.N. Gibson notes that outlandish spellings seem sometimes to be chosen purely for the purpose of ridiculing him, by making the name seem vulgar and rustic, a characteristic especially typical of Baconians such as Edwin Durning-Lawrence: 
+    This hatred [of the Stratford man] not only takes the form of violent abuse and the accusation of every kind of disreputable conduct, but also of the rather childish trick of hunting up all the most outlandish Elizabethan variations of the spelling of his name, and filling their pages with "Shagspur", "Shaxpers", and similar atrocities; while Sir Edwin Durning-Lawrence concludes each chapter in his book with the legend "Bacon is Shakespeare" in block capitals.[33]
+
+Some authors claim that the use of a hyphen in early published versions of the name is an indication that it is a pseudonym.[34] They argue that fictional descriptive names (such as "Master Shoe-tie" and "Sir Luckless Woo-all") were often hyphenated in plays, and pseudonyms such as "Tom Tell-truth" were also sometimes hyphenated.[35] Kathman argues that this is not the case, and that real names were as likely to be hyphenated as pseudonyms.[6] He states that the pseudonym "Martin Marprelate" was sometimes hyphenated, but usually not. Robert Waldegrave, who printed the Marprelate tracts, never hyphenated the name, but did hyphenate his own: "If hyphenation was supposed to indicate a pseudonym, it is curious that Waldegrave repeatedly hyphenated his own name while failing to hyphenate an undisputed pseudonym in the same texts
