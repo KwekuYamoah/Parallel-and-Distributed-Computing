@@ -6,11 +6,11 @@
 import numpy as np
 import sys
 
-def generateMatrix(rows, cols):
+def generateMatrix(n):
     """
     This function generates an N * N 
     matrix and writes the results to two
-    files matrixA.txt and matrixB.txt
+    files matrixA.txt and matrixB.txt as row col values
     """
 
     #open files for writing
@@ -18,16 +18,19 @@ def generateMatrix(rows, cols):
     file_b = open("matrixB.txt","w+")
 
     #write matrix dimensions to files
-    file_a.write("%d %d\t\n" % (int(rows),int(cols)))
-    file_b.write("%d %d\t\n" % (int(rows),int(cols)))
+    file_a.write("%d %d\t\n" % (int(n),int(n)))
+    file_b.write("%d %d\t\n" % (int(n),int(n)))
 
-    matrix = np.arange(1, (int(rows) * int(cols) + 1))
-    matrix = matrix.reshape(int(rows),int(cols))
+    matrix = np.arange(1, (int(n) * int(n) + 1))
+    matrix = matrix.reshape(int(n),int(n))
 
 
     
-    np.savetxt(file_a, matrix, delimiter='\t', fmt='%d')
-    np.savetxt(file_b, matrix, delimiter='\t', fmt='%d')
+    for i in range(0, int(n)):
+        for j in range(0,int(n)):
+            file_a.write(str(i) + ' ' + str(j) + ' ' + str(matrix[i][j]) + '\n')
+            file_b.write(str(i) + ' ' + str(j) + ' ' + str(matrix[i][j]) + '\n')
+
 
     
     file_a.close()

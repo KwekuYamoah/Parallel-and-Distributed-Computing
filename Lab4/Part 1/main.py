@@ -1,7 +1,7 @@
 from mrjob_wordcount import MRWordCount 
 import sys 
 
-##set up command line arguements here... 
+##set up command line arguments here... 
 
 def lab4(job):
     if job == "count":
