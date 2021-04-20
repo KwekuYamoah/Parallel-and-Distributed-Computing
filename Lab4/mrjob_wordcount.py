@@ -16,7 +16,6 @@ class MRWordCount(MRJob):
     This program counts the number times
     a word appears in a text file passed
     """
-
     def configure_args(self):
         """
         This method configures the commandline

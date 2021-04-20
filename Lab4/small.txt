@@ -1,0 +1,24 @@
+        Personal Computers were first available on the mass market in 
+        1977.  At that time there were basically three brands widely 
+        available, Apple, Tandy, and Commodore.  I bought a TRS-80 model 
+        I in the fall of that year and began computer consulting the 
+        next spring.  Things have changed a lot in the last 14 years.  
+        These are a few observations on some of the developments and 
+        trends.
+        In the early 1980s a man would come to me and say, "I have a 
+        problem in my business.  It concerns efficiency in office 
+        procedures.  I am covered up in writing, bookkeeping, billing, 
+        paying, keeping track of customers, etc.  They said you have 
+        been able to show other businesses how to use computers to solve 
+        these problems.  Please show me."
+        I would then analyse his business talking not only to him but 
+        primarily to his secretary and/or bookkeeper(s) to find just how 
+        his business ran, what the problems were, and what was unique 
+        about his business (something almost always was).  I would plan 
+        hardware and develop software designed to work efficiently to 
+        solve his problems and to grow with his business for the next 
+        five or (wistfully) ten years.  I would install the system, 
+        train his employees and support the system with further 
+        modifications, hardware and software maintenance, additional 
+        training, etc. as needed.  This worked well and was always 
+        successful. 
