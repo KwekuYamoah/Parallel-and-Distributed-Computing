@@ -32,8 +32,11 @@ def generateMatrix(rows, cols):
     
     file_a.close()
     file_b.close()
+
+    return matrix
+
 if __name__ == '__main__':
     args = sys.argv
     globals()[args[1]](*args[2:])
 
-#run with "python3 generate_matrix.py generateMatrix 2 2"
+#run with "python3 generate_matrix.py generateMatrix rows cols"
