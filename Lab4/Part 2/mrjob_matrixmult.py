@@ -6,7 +6,7 @@
 
 from mrjob.job import MRJob
 from mrjob.step import MRStep
-
+import numpy as np
 import re
 import os
 import time
@@ -71,7 +71,9 @@ class MrMatrixReduce(MRJob):
         
         total = sum(values)
         yield key, total
+        self.file_c.write(str(key[0]) + " " + str(key[1]) + " ")
         self.file_c.write(str(total) + "\n")
+        
     
     def steps(self):
         return [MRStep(mapper=self.mapper_one,
