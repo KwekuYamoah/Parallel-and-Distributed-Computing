@@ -84,3 +84,5 @@ if __name__ == '__main__':
     MrMatrixReduce.run()
     end = time.time()
     print(end-start)
+
+#run with "time python3 mrjob_matrixmult.py matrixA.txt matrixB.txt"

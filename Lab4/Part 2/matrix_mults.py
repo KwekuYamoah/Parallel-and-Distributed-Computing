@@ -25,14 +25,20 @@ def matrixMultiply(n):
     #generate an matrix of zeros for matrix c
     matrix_c = np.zeros(int(n) * int(n))
     matrix_c = matrix_c.reshape(int(n), int(n)) #reshape to get rows x cols matrix
+    print(matrix_c)
 
-    #do multiplication
-    #note rows = cols
+    #iterate through rows of matrix a
+    for i in range(len(matrix_a)):
+        #iterate through columns of matrix b
+        for j in range(len(matrix_b[0])):
+            #iterate through rows of matrix b
+            for k in range(len(matrix_b)):
+                matrix_c[i][j] += matrix_a[i][k] * matrix_b[k][j]
     
-    for i in range(int(n)):
-        for j in range(int(n)):
-            for k in range(int(n)):
-                matrix_c[i][j] = matrix_c[i][j] + matrix_a[i][k] + matrix_b[k][j]
+
+    #do matrix multiplication with numpy
+    #matrix_c = np.matmul(matrix_a, matrix_b)
+    print(matrix_c)
     
 
     
