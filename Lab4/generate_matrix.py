@@ -17,6 +17,10 @@ def generateMatrix(rows, cols):
     file_a = open("matrixA.txt", 'w+')
     file_b = open("matrixB.txt","w+")
 
+    #write matrix dimensions to files
+    file_a.write("%d %d\t\n" % (int(rows),int(cols)))
+    file_b.write("%d %d\t\n" % (int(rows),int(cols)))
+
     matrix = np.arange(1, (int(rows) * int(cols) + 1))
     matrix = matrix.reshape(int(rows),int(cols))
 
