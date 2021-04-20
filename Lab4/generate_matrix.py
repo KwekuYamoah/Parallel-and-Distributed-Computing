@@ -4,6 +4,7 @@
 @version: 1.0.0
 """
 import numpy as np
+import sys
 
 def generateMatrix(rows, cols):
     """
@@ -16,8 +17,8 @@ def generateMatrix(rows, cols):
     file_a = open("matrixA.txt", 'w+')
     file_b = open("matrixB.txt","w+")
 
-    matrix = np.arange(1, (rows * cols) + 1)
-    matrix = matrix.reshape(rows,cols)
+    matrix = np.arange(1, (int(rows) * int(cols) + 1))
+    matrix = matrix.reshape(int(rows),int(cols))
 
 
     
@@ -27,5 +28,8 @@ def generateMatrix(rows, cols):
     
     file_a.close()
     file_b.close()
+if __name__ == '__main__':
+    args = sys.argv
+    globals()[args[1]](*args[2:])
 
-generateMatrix(10,10)
+#run with "python3 generate_matrix.py generateMatrix 2 2"
