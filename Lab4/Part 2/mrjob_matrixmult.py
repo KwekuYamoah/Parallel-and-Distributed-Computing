@@ -12,6 +12,7 @@ import os
 import time
 WORD_RE = re.compile(r"[\w']+")
 
+counter = 0
 class MrMatrixReduce(MRJob):
     """Class performs a parallel matrix
     multiplication with sqrt(p) partitions
@@ -21,34 +22,35 @@ class MrMatrixReduce(MRJob):
     """
 
     file_c = open('matrixC.txt', 'w+')
-
-    def steps(self):
-        return [MRStep(mapper=self.mapper_one,
-                       reducer=self.reducer_one),
-                MRStep(mapper=self.mapper_two,
-                       reducer=self.reducer_two)]  
+ 
     
     def mapper_one(self,_,line):
+        #make counter global
+        global counter
+
         x = line.split()
-        if len(x) == 2:
+        x = list(map(int,x))
+
+        if len(x) == 3:
+            row, col, val = x
+        elif len(x) == 2 and counter == 1:
+            row, val = x
+            col = 0
+        elif len(x) == 2 and counter == 0:
+            counter = 1
             return
         
-        row, col,val = line.split()
-
-        row = int(row)
-        col = int(col)
-        val = int(val)
-
-        filename = os.environ['map_input_file']
-
-        if filename == 'matrixA.txt':
-            yield col, ('A', row, val)
         
-        if filename =='matrixB.txt':
-            yield row,('B',col,val)
-            # print(i,('B',j,val))
+        filename = os.environ['mapreduce_map_input_file']
 
-    def reducer_one(self, j, values):
+        if 'A' in filename:
+            yield col, ('A', row, val)
+            
+        if 'B' in filename:
+            yield row,('B',col,val)
+            
+
+    def reducer_one(self, keys, values):
         listA = []
         listB = []
 
@@ -58,17 +60,24 @@ class MrMatrixReduce(MRJob):
             if val[0] =='B':
                 listB.append(val)
         
-        for(a,i,val1) in listA:
-            for(b,k,val2) in listB:
-                yield (i,k),int(val1)*int(val2)
+        for row0,col0,val0 in listA:
+            for row1,col1,val1 in listB:
+                yield (col0, col1), int(val0)*int(val1)
 
-    def mapper_two(self, col, value):
-        yield (col),value
+    def mapper_two(self, key, value):
+        yield key, value
     
-    def reducer_two(self, key, value):
-        total = sum(value)
+    def reducer_two(self, key, values):
+        
+        total = sum(values)
         yield key, total
         self.file_c.write(str(total) + "\n")
+    
+    def steps(self):
+        return [MRStep(mapper=self.mapper_one,
+                       reducer=self.reducer_one),
+                MRStep(mapper=self.mapper_two,
+                       reducer=self.reducer_two)] 
 
 if __name__ == '__main__':
     start = time.time()
