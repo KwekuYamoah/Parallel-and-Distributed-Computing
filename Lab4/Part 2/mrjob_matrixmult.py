@@ -32,16 +32,18 @@ class MrMatrixReduce(MRJob):
 
     
 
-    """def configure_args(self):
-        This method configures command line arguments for the program. 
+    def configure_args(self):
+        """This method configures command line arguments for the program. 
         It allows a user to specify the number of processors to utilise for block partitioning
-        
+        """ 
         super(MrMatrixReduce, self).configure_args()
         self.add_passthru_arg(
             "--P", 
             help = "specify the number of processors. "
-        )""" 
+        )
 
+    n = sum(1 for line in open('matrix.txt')) #get dimensions of matrix
+    
 
     def mapper_raw(self,input_file,input_uri):
         matrix =[]
@@ -51,9 +53,9 @@ class MrMatrixReduce(MRJob):
             for line in file.readlines():
                 row  = [int(index) for index in line.split()]
                 matrix.append(row)
-        
-        for i in generate_partitions.rowMajor(matrix,8,2):
-            for j in generate_partitions.columnMajor(matrix,8,2):
+        offset = int((self.n/math.sqrt(int(self.options.P))))
+        for i in generate_partitions.rowMajor(matrix,8,offset):
+            for j in generate_partitions.columnMajor(matrix,8,offset):
                 yield str(count), i
                 yield str(count), j
 
