@@ -46,6 +46,16 @@ class MrMatrixReduce(MRJob):
     
 
     def mapper_raw(self,input_file,input_uri):
+        """Maps partions into key vale pairs from a file
+
+        Args:
+            input_file (text): file containing matrix
+            input_uri (string): path of file based on
+            number of processors defined
+
+        Yields:
+            [int]: multiplication of matrix given
+        """
         matrix =[]
         count = 1
 
@@ -62,6 +72,17 @@ class MrMatrixReduce(MRJob):
                 count += 1
 
     def reducer(self, key, values):
+        """Aggregates the results from the mapper
+           and yields a local multiplication for
+           that block
+
+        Args:
+            key ([type]): [description]
+            values ([type]): [description]
+
+        Yields:
+            [type]: [description]
+        """
 
         count = 0
         localList = []
@@ -74,6 +95,11 @@ class MrMatrixReduce(MRJob):
                 answer.append(generate_partitions.calculate(row,col))
         
         yield key, answer
+        self.file_c.write(str(key) + " ")
+        self.file_c.write(str(answer) + "\n")
+
+        
+            
     
 if __name__ == '__main__':
     start = time.time()
@@ -81,4 +107,4 @@ if __name__ == '__main__':
     end = time.time()
     print(end-start)
 
-#run with "time python3 mrjob_matrixmult.py matrixA.txt matrixB.txt"
+#run with "time python3 mrjob_matrixmult.py matrix.txt --P=P"
