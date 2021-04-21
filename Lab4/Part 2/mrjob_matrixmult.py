@@ -6,13 +6,17 @@
 
 from mrjob.job import MRJob
 from mrjob.step import MRStep
-import numpy as np
+
+
+import math
 import re
 import os
 import time
+
 WORD_RE = re.compile(r"[\w']+")
 
 counter = 0
+
 class MrMatrixReduce(MRJob):
     """Class performs a parallel matrix
     multiplication with sqrt(p) partitions
@@ -22,11 +26,30 @@ class MrMatrixReduce(MRJob):
     """
 
     file_c = open('matrixC.txt', 'w+')
- 
+
+    #read dimensions of matrices by using one file
+    file = open("matrixA.txt","r+")
+    line = file.readline()
+    n = list(line.split())[0] #dimensions of matrices
+
     
+
+    def configure_args(self):
+        """This method configures command line arguments for the program. 
+        It allows a user to specify the number of processors to utilise for block partitioning
+        """
+        super(MrMatrixReduce, self).configure_args()
+        self.add_passthru_arg(
+            "--P", 
+            help = "specify the number of processors. "
+        )
+
+
     def mapper_one(self,_,line):
         #make counter global
         global counter
+
+
 
         x = line.split()
         x = list(map(int,x))
@@ -41,16 +64,18 @@ class MrMatrixReduce(MRJob):
             return
         
         
+        
         filename = os.environ['mapreduce_map_input_file']
 
         if 'A' in filename:
-            yield col, ('A', row, val)
+            yield col/math.sqrt(int(self.options.P)), ('A', row, val)
             
         if 'B' in filename:
-            yield row,('B',col,val)
+            yield row/math.sqrt(int(self.options.P)),('B',col,val)
             
 
     def reducer_one(self, keys, values):
+        
         listA = []
         listB = []
 
