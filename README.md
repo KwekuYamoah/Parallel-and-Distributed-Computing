@@ -21,6 +21,20 @@ All code files for used for lab 3 assignment can be found in this folder: [Lab 3
 
 When you get to this folder you need to compile and run the C program `matrix_mult.c` in your Linux environment using the gcc compiler. The C program can be found here: [matrix_mult.c](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/main/Lab3/matrix_mult.c)
 
-Reading the documentation report for this code is essential for a successful execution. Do so here: [Lab 3 Report]()
+Reading the documentation report for this code is essential for a successful execution. Do so here: [Lab 3 Report](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/KwekuYamoah(71712022)-Lab3Report.pdf)
 
-A more detailed instruction for the documentation of lab 3 can be read at [Lab 3 README]()
+A more detailed instruction for the documentation of lab 3 can be read at [Lab 3 README](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/documentation#lab-3-report)
+
+## Lab 4 Code Files
+All code files for used for lab 3 assignment can be found in this folder: [Lab 4 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab4). 
+
+When you get to this folder you need to  programs in `Part 1` and `Part 2` in your Linux environment . To run the code in `Part 1` do `python3 mrjob_wordcount.py <input.txt --stop-words=stop_words.txt`. Code is found at [mrjob_wordcount.py](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/main/Lab4/Part%201/mrjob_wordcount.py)
+
+To run the code in `Part 2` do run 
+[matrix_mults.py](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/main/Lab4/Part%202/matrix_mults.py) first with the command `python3 matrix_mults.py N`; `N= size of matrix`.After run
+`python3 mrjob_matrixmult.py matrix.txt --P=n`. Code is found at [mrjob_matrixmult.py](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/main/Lab4/Part%202/mrjob_matrixmult.py)
+
+
+Reading the documentation report for this code is essential for a successful execution. Do so here: [Lab 4 Report](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/KwekuYamoah(71712022)-Lab4Report.pdf)
+
+A more detailed instruction for the documentation of lab 3 can be read at [Lab 4 README](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/documentation#lab-4-report)
