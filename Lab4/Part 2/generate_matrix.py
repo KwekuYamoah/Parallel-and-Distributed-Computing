@@ -13,12 +13,11 @@ def generateMatrix(n):
     """
 
     #open files for writing
-    file_a = open("matrixA.txt", 'w+')
-    file_b = open("matrixB.txt","w+")
+    file_a = open("matrix.txt", 'w+')
+    
 
     #write matrix dimensions to files
     file_a.write("%d %d\t\n" % (int(n),int(n)))
-    file_b.write("%d %d\t\n" % (int(n),int(n)))
 
     matrix = [[0 for i in range(int(n))] for j in range(int(n))] #create matrix
     
@@ -34,12 +33,11 @@ def generateMatrix(n):
     for i in range(0, int(n)):
         for j in range(0,int(n)):
             file_a.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix[i][j])) + '\n')
-            file_b.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix[i][j])) + '\n')
-
+            
 
     
     file_a.close()
-    file_b.close()
+   
 
     return matrix
 

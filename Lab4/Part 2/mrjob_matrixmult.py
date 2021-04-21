@@ -67,13 +67,10 @@ class MrMatrixReduce(MRJob):
         
         if 'A' in filename:
             #do partition and send row values within that range with cols as keys for matrix A
-            for b_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
-                yield col, ('A', row, val)
+            yield col/math.sqrt(int(self.options.P)), ('A', row, val)
             
         if 'B' in filename:
-            
-            for a_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
-                yield row,('B',col,val)
+            yield row/math.sqrt(int(self.options.P)),('B',col,val)
             
 
     def reducer_one(self, keys, values):
