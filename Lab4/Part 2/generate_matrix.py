@@ -3,7 +3,6 @@
 @id: 71712022
 @version: 1.0.0
 """
-import numpy as np
 import sys
 
 def generateMatrix(n):
@@ -21,20 +20,21 @@ def generateMatrix(n):
     file_a.write("%d %d\t\n" % (int(n),int(n)))
     file_b.write("%d %d\t\n" % (int(n),int(n)))
 
-    matrix = np.zeros(int(n) * int(n))
-    matrix = matrix.reshape(int(n),int(n))
+    matrix = [[0 for i in range(int(n))] for j in range(int(n))] #create matrix
+    
 
-    i = 1
+    a = 1
     for m in range(0,int(n)):
         for o in range(0,int(n)):
-            matrix[m][o] = i
-            i+=1
+            matrix[m][o] = int(a)  
+            a+=1 
+            
 
     
     for i in range(0, int(n)):
         for j in range(0,int(n)):
-            file_a.write(str(i) + ' ' + str(j) + ' ' + str(matrix[i][j]) + '\n')
-            file_b.write(str(i) + ' ' + str(j) + ' ' + str(matrix[i][j]) + '\n')
+            file_a.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix[i][j])) + '\n')
+            file_b.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix[i][j])) + '\n')
 
 
     
