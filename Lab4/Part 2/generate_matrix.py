@@ -16,9 +16,6 @@ def generateMatrix(n):
     file_a = open("matrix.txt", 'w+')
     
 
-    #write matrix dimensions to files
-    file_a.write("%d %d\t\n" % (int(n),int(n)))
-
     matrix = [[0 for i in range(int(n))] for j in range(int(n))] #create matrix
     
 
@@ -30,9 +27,9 @@ def generateMatrix(n):
             
 
     
-    for i in range(0, int(n)):
-        for j in range(0,int(n)):
-            file_a.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix[i][j])) + '\n')
+    with open('matrix.txt', 'w') as testfile:
+        for row in matrix:
+            testfile.write('\t'.join([str(a) for a in row]) + '\n')
             
 
     
