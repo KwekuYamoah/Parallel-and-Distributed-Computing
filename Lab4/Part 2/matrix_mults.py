@@ -9,6 +9,7 @@ import sys
 import time
 
 def matrixMultiply(n):
+    start_time = time.time()
     """
     This function performs the serial multiplication 
     of a matrix. Runtime measurements are taken for 
@@ -48,6 +49,7 @@ def matrixMultiply(n):
     np.savetxt(file_c, matrix_c, delimiter='\t', fmt='%d')
 
     file_c.close()
+    print("--- %s minutes ---" % str((time.time() - start_time)/60))
 if __name__ == '__main__':
     args = sys.argv
     start_time = time.time()
