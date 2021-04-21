@@ -64,14 +64,19 @@ class MrMatrixReduce(MRJob):
             return
         
         
-        
+        A_BLOCK_SIZE = int(self.n)/math.sqrt(int(self.options.P))
+        B_BLOCK_SIZE = A_BLOCK_SIZE
         filename = os.environ['mapreduce_map_input_file']
 
         if 'A' in filename:
-            yield col/math.sqrt(int(self.options.P)), ('A', row, val)
+            
+            for b_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
+                yield col, ('A', row, val)
             
         if 'B' in filename:
-            yield row/math.sqrt(int(self.options.P)),('B',col,val)
+            
+            for a_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
+                yield row,('B',col,val)
             
 
     def reducer_one(self, keys, values):
