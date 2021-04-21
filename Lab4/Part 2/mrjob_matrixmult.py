@@ -64,8 +64,9 @@ class MrMatrixReduce(MRJob):
                 row  = [int(index) for index in line.split()]
                 matrix.append(row)
         offset = int((self.n/math.sqrt(int(self.options.P))))
-        for i in generate_partitions.rowMajor(matrix,8,offset):
-            for j in generate_partitions.columnMajor(matrix,8,offset):
+        bands = math.sqrt(int(self.options.P))
+        for i in generate_partitions.rowMajor(matrix,bands,offset):
+            for j in generate_partitions.columnMajor(matrix,bands,offset):
                 yield str(count), i
                 yield str(count), j
 
