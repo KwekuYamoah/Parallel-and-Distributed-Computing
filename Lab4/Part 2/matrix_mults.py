@@ -44,9 +44,13 @@ def matrixMultiply(n):
 
     
     #write results to text file
-    file_c = open("matrixC_serial.txt", 'w+')
+    file_c = open("matrixSerialOut.txt", 'w+')
     file_c.write("%d %d\t\n" % (int(n),int(n)))
-    np.savetxt(file_c, matrix_c, delimiter='\t', fmt='%d')
+    for i in range(0, int(n)):
+        for j in range(0,int(n)):
+            file_c.write(str(i) + ' ' + str(j) + ' ' + str(int(matrix_c[i][j])) + '\n')
+            
+
 
     file_c.close()
     

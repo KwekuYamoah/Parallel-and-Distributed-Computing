@@ -38,7 +38,6 @@ def generateMatrix(n):
     
     file_a.close()
    
-
     return matrix
 
 if __name__ == '__main__':
