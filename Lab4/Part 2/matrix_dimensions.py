@@ -18,4 +18,3 @@ def getDimensions(name):
     print(rows,cols)
 
     return (rows, cols)
-getDimensions("matrixA.txt")

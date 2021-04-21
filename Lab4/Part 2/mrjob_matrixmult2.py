@@ -5,7 +5,7 @@
 """
 
 from mrjob.job import MRJob
-from mrjob.step import MRStep
+from matrix_dimensions import getDimensions
 
 
 import math
@@ -14,6 +14,12 @@ import os
 import time
 
 WORD_RE = re.compile(r"[\w']+")
+matA = getDimensions("matrixA.txt")
+matB = getDimensions("matrixB.txt")
+
+i = int(matA[0])
+j = int(matA[1])
+k = int(matB[1])
 
 counter = 0
 
@@ -45,68 +51,62 @@ class MrMatrixReduce(MRJob):
         )
 
 
-    def mapper_one(self,_,line):
+    def mapper(self,_,line):
         #make counter global
         global counter
 
 
 
         x = line.split()
-        x = list(map(int,x))
-
-        if len(x) == 3:
-            row, col, val = x
-        elif len(x) == 2 and counter == 1:
-            row, val = x
-            col = 0
-        elif len(x) == 2 and counter == 0:
-            counter = 1
+        if len(x) == 2:
             return
+        row, col, val = line.split()
         
-        filename = os.environ['mapreduce_map_input_file']
-        
-        if 'A' in filename:
-            #do partition and send row values within that range with cols as keys for matrix A
-            for b_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
-                yield col, ('A', row, val)
-            
-        if 'B' in filename:
-            
-            for a_block in range(int(int(self.n)/math.sqrt(int(self.options.P)))):
-                yield row,('B',col,val)
-            
-
-    def reducer_one(self, keys, values):
-        #do partition and send rcol values within that range with rows as keys for matrix B
         listA = []
         listB = []
 
+        filename = os.environ['mapreduce_map_input_file']
+
+        row = int(row)
+        col = int(col)
+        val = int(val)
+        
+        if 'A' in filename:
+            listA.append((row, col, val))
+            #do partition and send row values within that range with cols as keys for matrix A
+            for b_block in range(k):
+                yield (row,b_block), ('A', col, val)
+            
+        if 'B' in filename:
+            listB.append((row, col, val))
+            #do partition and send col values within that range with rows as keys for matrix  B
+            for a_block in range(i):
+                yield (a_block,col),('B',row,val)
+            
+
+    def reducer(self, key, values):
+        listA = [0]*int(j)
+        listB = [0]*int(j)
+        listFinal = []
+       
+
         for val in values:
             if val[0] == 'A':
-                listA.append(val)
-            if val[0] =='B':
-                listB.append(val)
+                position = val[1]
+                listA[position]= val[2]
+            elif val[0] =='B':
+                position = val[1]
+                listB[position]= val[2]
         
-        for row0,col0,val0 in listA:
-            for row1,col1,val1 in listB:
-                yield (col0, col1), int(val0)*int(val1)
-
-    def mapper_two(self, key, value):
-        yield key, value
-    
-    def reducer_two(self, key, values):
-        
-        total = sum(values)
+        for x  in range(0, len(listA)):
+            listFinal.append(listA[x] * listB[x])
+        total = sum(listFinal)
         yield key, total
         self.file_c.write(str(key[0]) + " " + str(key[1]) + " ")
         self.file_c.write(str(total) + "\n")
         
     
-    def steps(self):
-        return [MRStep(mapper=self.mapper_one,
-                       reducer=self.reducer_one),
-                MRStep(mapper=self.mapper_two,
-                       reducer=self.reducer_two)] 
+   
 
 if __name__ == '__main__':
     start = time.time()

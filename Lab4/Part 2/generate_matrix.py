@@ -21,9 +21,14 @@ def generateMatrix(n):
     file_a.write("%d %d\t\n" % (int(n),int(n)))
     file_b.write("%d %d\t\n" % (int(n),int(n)))
 
-    matrix = np.arange(1, (int(n) * int(n) + 1))
+    matrix = np.zeros(int(n) * int(n))
     matrix = matrix.reshape(int(n),int(n))
 
+    i = 1
+    for m in range(0,int(n)):
+        for o in range(0,int(n)):
+            matrix[m][o] = i
+            i+=1
 
     
     for i in range(0, int(n)):
