@@ -34,7 +34,11 @@ Read instructions for lab 1 at [Lab 1 Code Readme](https://github.com/KwekuYamoa
 ## Lab 2 Implementation Instructions
 Read instructions for lab 2 at [Lab 2 Code Readme](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing#lab-2-code-files)
 
+## Lab 3 Implementation Instructions
+Read instructions for lab 3 at [Lab 3 Code Readme](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing#lab-3-code-files)
 
+## Lab 4 Implementation Instructions
+Read instructions for lab 4 at [Lab 4 Code Readme](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing#lab-3-code-files)
 # Documentation Branch
 The documentation branch holding reports and typesets in latex can be viewed from [Documentations](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/documentation) 
 
@@ -42,6 +46,13 @@ The documentation branch holding reports and typesets in latex can be viewed fro
 Read documentation for lab 1 at [Lab 1 Docs Readme](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-1-report)
 ## Lab 2 Documentation Instructions
 Read documentation for lab 2 at [Lab 2 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-2-report)
+
+## Lab 3 Documentation Instructions
+Read documentation for lab 3 at [Lab 3 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-3-report). For Lab 3 it is essential that you read and understand the report file thoroughly. Make sure you have MPICH installed before you clone and run the files for lab3
+
+## Lab 4 Documentation Instructions
+Read documentation for lab 4 at [Lab 4 Code Doc](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/README.md#lab-4-report). For Lab 4 it is essential that you read and understand the report file thoroughly. Make sure you to note the two parts and how to run the respective programs
+
 
 # Conclusion
 That's all for now. Do check every week to see if the repository has been updated.

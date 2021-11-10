@@ -16,3 +16,21 @@ The document was typeset using latex. The folder containing all the latex file i
 To view the code files that were implemented and run to generate the output log for the comparative table in the report visit: [Lab2 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab2)
 
 When you get to the above link compile and run the file `naive_ompMT.c` in your Linux environment.
+
+## Lab 3 Report
+The report for Lab3 is titled us `KwekuYamoah(71712022)-Lab3Report`. You can find the file at link: [Lab 3 Report](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/KwekuYamoah(71712022)-Lab3Report.pdf)
+
+The document was typeset using latex. The folder containing all the latex file is found at the link: [Lab3 Latex TypeSet](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/documentation/Latex-Reports/Lab3)
+
+To view the code files that were implemented and run to generate the output log for the comparative table in the report visit: [Lab3 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab3)
+
+When you get to the above link compile and run the file `matrix_mult.c` in your Linux environment.Also ensure that you have MPICH installed in your Linux subsystem.
+
+## Lab 4 Report
+The report for Lab3 is titled us `KwekuYamoah(71712022)-Lab4Report`. You can find the file at link: [Lab 4 Report](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/blob/documentation/KwekuYamoah(71712022)-Lab4Report.pdf)
+
+The document was typeset using latex. The folder containing all the latex file is found at the link: [Lab4 Latex TypeSet](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/documentation/Latex-Reports/Lab4)
+
+To view the code files that were implemented and run to generate the output log for the comparative table in the report visit: [Lab4 Codes](https://github.com/KwekuYamoah/Parallel-and-Distributed-Computing/tree/main/Lab4). This section has two parts `Part 1` and `Part 2`. Part 1 is the lab and Part is the project
+
+Main lab report has instructions for running the program
